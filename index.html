@@ -16,7 +16,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.css"
     />
     <script type="module" crossorigin src="/project-BooksyTeam4/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/index-CG6Xf3sV.css">
+    <link rel="modulepreload" crossorigin href="/project-BooksyTeam4/assets/vendor-CWxt7QI6.js">
+    <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/index-B-Dpur-9.css">
   </head>
   <body>
     <header class="header">header</header>
@@ -27,21 +28,25 @@
       <section id="hero" class="hero">hero</section>
 
       <section id="books" class="books">
-  <h2 class="visually-hidden">Trending books</h2>
+  <container class="container">
+    <h2 class="visually-hidden">Trending books</h2>
 
-  <div class="books-categories-wrapper">
-    <div class="books-title-wrapper">
-      <h3 class="books-subtitle">Books</h3>
-      <p class="books-count">Showing 24 of 100</p>
+    <div class="books-categories-wrapper">
+      <div class="books-title-wrapper">
+        <h3 class="books-subtitle">Books</h3>
+        <p class="books-count">Showing 24 of 100</p>
+      </div>
+
+      <div class="dropdown">
+        <button type="button" class="dropdown-toggle">Categories</button>
+        <ul class="dropdown-menu"></ul>
+      </div>
     </div>
 
-    <ul class="books-categories-list"></ul>
-  </div>
-
-  <div class="books-list-wrapper">
-    <ul class="books-cards-list">
-      <!-- Заготовка під картку -->
-      <!-- <li class="books-card">
+    <div class="books-list-wrapper">
+      <ul class="books-cards-list">
+        <!-- Заготовка під картку -->
+        <!-- <li class="books-card">
         <img class="books-card-image" src="" alt="" />
         <div class="books-card-text-wrapper">
           <h3 class="books-card-title">Book title</h3>
@@ -50,9 +55,10 @@
         <p class="books-card-price">$</p>
         <button class="books-card-btn" type="button">Learn More</button>
       </li> -->
-    </ul>
-    <button class="books-btn" type="button">Show More</button>
-  </div>
+      </ul>
+      <button class="books-btn" type="button">Show More</button>
+    </div>
+  </container>
 </section>
 
       <section id="feedbacks" class="feedbacks">
