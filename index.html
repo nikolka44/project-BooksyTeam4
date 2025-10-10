@@ -16,7 +16,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.css"
     />
     <script type="module" crossorigin src="/project-BooksyTeam4/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-BooksyTeam4/assets/vendor-CWxt7QI6.js">
+    <link rel="modulepreload" crossorigin href="/project-BooksyTeam4/assets/vendor-C3vE7q-J.js">
+    <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/vendor-DnGaGgwy.css">
     <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/index-B-Dpur-9.css">
   </head>
   <body>
@@ -85,8 +86,99 @@
 
     <main>
       <!-- Loads the specified .html file -->
-      <section id="hero" class="hero">hero</section>
+      <section id="hero" class="hero">
+    <div class="hero__container">
+        <div class="hero__slider swiper">
+            <ul class="hero__list swiper-wrapper">
+                <!-- Slide 1 -->
+                <li class="hero__item swiper-slide">
+                    <picture>
+                        <!-- mobile -->
+                        <source srcset="../img/hero/1-mob-ban-1x-min.jpg 1x, ../img/hero/1-mob-ban-2x-min.jpg 2x"
+                            media="(max-width: 576px)" />
+                        <!-- tablet -->
+                        <source srcset="../img/hero/1-tub-ban-1x-min.jpg 1x, ../img/hero/1-tub-ban-2x-min.jpg 2x"
+                            media="(max-width: 992px)" />
+                        <!-- desktop -->
+                        <source srcset="../img/hero/1-des-ban-1x-min.jpg 1x, ../img/hero/1-des-ban-2x-min.jpg 2x"
+                            media="(min-width: 993px)" />
+                        <img src="../img/hero/1-des-ban-1x-min.jpg" alt="Reading with coffee" class="hero__image" />
+                    </picture>
 
+                    <div class="hero__overlay">
+                        <p class="hero__discount">Get 10% off your first order</p>
+                        <a href="#books" class="hero__btn">Shop Now!</a>
+                    </div>
+                </li>
+
+                <!-- Slide 2 -->
+                <li class="hero__item swiper-slide">
+                    <picture>
+                        <source srcset="../img/hero/2-mob-ban-1x-min.jpg 1x, ../img/hero/2-mob-ban-2x-min.jpg 2x"
+                            media="(max-width: 576px)" />
+                        <source srcset="../img/hero/2-tub-ban-1x-min.jpg 1x, ../img/hero/2-tub-ban-2x-min.jpg 2x"
+                            media="(max-width: 992px)" />
+                        <source srcset="../img/hero/2-des-ban-1x-min.jpg 1x, ../img/hero/2-des-ban-2x-min.jpg 2x"
+                            media="(min-width: 993px)" />
+                        <img src="../img/hero/2-des-ban-1x-min.jpg" alt="Books and candle" class="hero__image" />
+                    </picture>
+
+                    <div class="hero__overlay">
+                        <p class="hero__discount">Cozy evenings start with books</p>
+                        <a href="#books" class="hero__btn">Shop Now!</a>
+                    </div>
+                </li>
+
+                <!-- Slide 3 -->
+                <li class="hero__item swiper-slide">
+                    <picture>
+                        <source srcset="../img/hero/3-mob-ban-1x-min.jpg 1x, ../img/hero/3-mob-ban-2x-min.jpg 2x"
+                            media="(max-width: 576px)" />
+                        <source srcset="../img/hero/3-tub-ban-1x-min.jpg 1x, ../img/hero/3-tub-ban-2x-min.jpg 2x"
+                            media="(max-width: 992px)" />
+                        <source srcset="../img/hero/3-des-ban-1x-min.jpg 1x, ../img/hero/3-des-ban-2x-min.jpg 2x"
+                            media="(min-width: 993px)" />
+                        <img src="../img/hero/3-des-ban-1x-min.jpg" alt="Sunlight and open book" class="hero__image" />
+                    </picture>
+
+                    <div class="hero__overlay">
+                        <p class="hero__discount">New releases are waiting for you</p>
+                        <a href="#books" class="hero__btn">Shop Now!</a>
+                    </div>
+                </li>
+
+                <!-- Slide 4 -->
+                <li class="hero__item swiper-slide">
+                    <picture>
+                        <source srcset="../img/hero/4-mob-ban-1x-min.jpg 1x, ../img/hero/4-mob-ban-2x-min.jpg 2x"
+                            media="(max-width: 576px)" />
+                        <source srcset="../img/hero/4-tub-ban-1x-min.jpg 1x, ../img/hero/4-tub-ban-2x-min.jpg 2x"
+                            media="(max-width: 992px)" />
+                        <source srcset="../img/hero/4-des-ban-1x-min.jpg 1x, ../img/hero/4-des-ban-2x-min.jpg 2x"
+                            media="(min-width: 993px)" />
+                        <img src="../img/hero/4-des-ban-1x-min.jpg" alt="Stack of books" class="hero__image" />
+                    </picture>
+
+                    <div class="hero__overlay">
+                        <p class="hero__discount">Find your favorite stories</p>
+                        <a href="#books" class="hero__btn">Shop Now!</a>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Кнопки -->
+            <div class="hero__buttons">
+                <button class="hero__button hero__button--prev" aria-label="Previous slide">←</button>
+                <button class="hero__button hero__button--next" aria-label="Next slide">→</button>
+            </div>
+        </div>
+
+        <h1 class="hero__title">Discover Your Next Great Read Today!</h1>
+    </div>
+</section>
+</body>
+
+</html>
       <section id="books" class="books">
   <container class="container">
     <h2 class="visually-hidden">Trending books</h2>
