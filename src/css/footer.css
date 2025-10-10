@@ -22,13 +22,20 @@
   gap: 32px;
 }
 
+.footer-nav-item a {
+  color: #0b0500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-nav-item a:hover,
+.footer-nav-item a:focus {
+  color: #ffffff7a;
+}
+
 .footer-icon-link {
-}
-
-.footer-icon {
-}
-
-.footer-nav {
+  display: block;
+  padding: 7px 0;
 }
 
 .footer-nav-list {
@@ -36,9 +43,6 @@
   flex-direction: column;
   align-items: center;
   gap: 32px;
-}
-
-.footer-nav-item {
 }
 
 .footer-form-wrapper {
@@ -84,8 +88,13 @@
   width: 220px;
   background-color: rgba(11, 5, 0, 0.05);
   margin-bottom: 12px;
-  outline: none;
   font-size: 16px;
+}
+
+.footer-input:focus {
+  border-color: #0b0500;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(11, 5, 0, 0.2);
 }
 
 .footer-input::placeholder {
@@ -106,6 +115,13 @@
   font-size: 16px;
   background-color: transparent;
   outline: none;
+  transition: all 0.3s ease;
+}
+
+.footer-btn:hover,
+.footer-btn:focus {
+  background-color: #0b0500;
+  color: #ffffff7a;
 }
 
 .divider {
