@@ -16,3 +16,16 @@ export async function getCategoryList() {
     throw error;
   }
 }
+
+export async function getTopBooks() {
+  try {
+    const response = await axios.get('books/top-books');
+    console.log(response.data);
+    const topbooks = response.data.flatMap(item => item.books);
+    console.log(topbooks);
+    return topbooks;
+  } catch (error) {
+    console.error('getTopBooks error:', error);
+    throw error;
+  }
+}
