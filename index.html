@@ -18,14 +18,14 @@
     <script type="module" crossorigin src="/project-BooksyTeam4/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-BooksyTeam4/assets/vendor-C3vE7q-J.js">
     <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/vendor-DnGaGgwy.css">
-    <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/index-C8axOPO4.css">
+    <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/index-DGMFJjtg.css">
   </head>
   <body>
     <header class="header">
   <div class="container header-container">
     <nav class="header-nav">
       <a class="logo-header" href="./index.html"
-        ><img class="img-logo" src="/src/img/logo.svg" alt="Logo"
+        ><img class="img-logo" src="/project-BooksyTeam4/assets/Frame1-B9C_ACCa.svg" alt="Logo"
       /></a>
       <ul class="site-nav-list">
         <li class="site-nav-item">
@@ -47,21 +47,26 @@
     </nav>
     <button class="burger-btn" type="button" data-menu-open>
       <svg class="burger-icon" width="24" height="24">
-        <use href="./images/icons.svg#icon-heroicons"></use>
+        <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-menu"></use>
       </svg>
     </button>
   </div>
   <div class="mobile-menu" data-menu>
     <div class="container mob-menu-container">
-      <button type="button" class="mob-menu-clos-btn" data-menu-close>
-        <svg class="menu-clos-icon" width="8" height="8">
-          <use href="./images/icons.svg#icon-close"></use>
-        </svg>
-      </button>
+      <div class="mob-menu-clos">
+        <a class="logo-header" href="./index.html"
+          ><img class="img-logo" src="/project-BooksyTeam4/assets/Frame1-B9C_ACCa.svg" alt="Logo"
+        /></a>
+        <button type="button" class="mob-menu-clos-btn" data-menu-close>
+          <svg class="menu-clos-icon" width="24" height="24">
+            <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-x"></use>
+          </svg>
+        </button>
+      </div>
       <nav class="mob-menu-nav">
         <ul class="nav-list-mob">
           <li class="nav-item-mob">
-            <a class="nav-link-mob current" href="#home">Home</a>
+            <a class="nav-link-mob " href="#home">Home</a>
           </li>
           <li class="nav-item-mob">
             <a class="nav-link-mob" href="#books">Books</a>
@@ -77,8 +82,6 @@
           </li>
         </ul>
       </nav>
-      
-
       
   </div>
 </header>
@@ -357,5 +360,6 @@
 </footer>
 
 
+    <script src="./js/menu.js"></script>
   </body>
 </html>
