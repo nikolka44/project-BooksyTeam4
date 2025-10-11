@@ -47,7 +47,7 @@ const feedbacksSwiper = new Swiper('.swiper-feedbacks', {
   },
   breakpoints: {
     0: { slidesPerView: 1, spaceBetween: 16 },
-    768: { slidesPerView: 2, spaceBetween: 20 },
+    768: { slidesPerView: 2, spaceBetween: 24 },
     1024: { slidesPerView: 3, spaceBetween: 24 },
   },
 });
