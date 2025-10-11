@@ -8,10 +8,7 @@
   list-style: none;
 }
 .feedbacks__elements {
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  min-height: 314px;
   border: 1px solid rgba(11, 5, 0, 0.15);
   border-radius: 16px;
   padding: 32px;
@@ -35,8 +32,8 @@
   background-color: #fceee6;
 }
 .feedbacks__btn:hover svg {
-    fill: #0b0500;
-    transform: translateY(-1px);
+  fill: #0b0500;
+  transform: translateY(-1px);
 }
 .feedbacks__btn.is-disabled {
   background: #d55a00;
@@ -46,25 +43,25 @@
   border: 1px solid rgba(11, 5, 0, 0.15);
 }
 .feedbacks__btn.is-disabled svg {
-    fill: #0b0500;
+  fill: #0b0500;
 }
 .feedbacks__btn svg {
-    fill: #fff;
-    width: 24px;
-    height: 25px;
-    transition: transform 0.2s, background-color 0.2s;
+  fill: #fff;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s, background-color 0.2s;
 }
 .feedbacks__btn:active {
-    background-color: #5a2502;
+  background-color: #5a2502;
 }
 .feedbacks__btn:active svg {
-    fill: #fff;
+  fill: #fff;
 }
 .feedbacks__btn:focus-visible {
-    background-color: #fceee6;
+  background-color: #fceee6;
 }
 .feedbacks__btn:focus-visible svg {
-    fill: #0b0500;
+  fill: #0b0500;
 }
 .feedbacks__dots {
   display: flex;
@@ -85,38 +82,46 @@
   opacity: 1;
 }
 .feedbacks__btn-slider {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 .feedbacks__navigations {
-    display: flex;
-    margin-top: 32px;
+  display: flex;
+  margin-top: 32px;
 }
 .feedbacks__container {
-    padding: 0 16px;
+  padding: 0 16px;
 }
 .feedbacks__title {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 .feedbacks__title-text {
-    margin-bottom: 80px;
-    font-weight: 400;
-    font-size: 18px;
+  margin-bottom: 80px;
+  font-weight: 400;
+  font-size: 18px;
 }
 .feedbacks__elements-text {
-    font-size: 18px;
-    margin-bottom: 24px;
+  font-size: 18px;
+  margin-bottom: 24px;
 }
 .feedbacks__people {
-    display: flex;
-    justify-content: flex-start;
-    gap: 16px;
-    align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  align-items: center;
 }
 .feedbacks__people-name {
-    font-size: 16px;
-    font-weight: 600;
+  font-size: 16px;
+  font-weight: 600;
 }
 .feedbacks__people-user {
-    font-size: 16px;
+  font-size: 16px;
+}
+@media only screen and (min-width: 768px) {
+   .feedbacks__elements {
+    min-height: 244px;
+   }
+  .feedbacks__container {
+    padding: 0 32px;
+  }
 }
