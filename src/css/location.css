@@ -1,0 +1,136 @@
+/* MOBILE (320px+) */
+.container-location {
+    padding: 64px 16px;
+}
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.location-header {
+    text-align: left;
+}
+
+.location-subtitle {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.location-title {
+    margin-bottom: 8px;
+    font-size: 40px;
+        line-height: 1.2;
+}
+
+.location-description {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.location-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.location-contacts-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.location-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    fill: #0b0500;
+}
+
+.location-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.location-contact-label {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #0b0500;
+}
+
+.location-text,
+.location-link {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #0b0500;
+}
+
+.location-link:hover,
+.location-link:focus {
+    opacity: 0.7;
+}
+
+.location-map {
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.location-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* TABLET (768px+) */
+@media only screen and (min-width: 768px) {
+    .container-location {
+            padding: 64px 32px;
+        }
+
+    .location-info {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 32px;
+        margin-bottom: 80px;
+    }
+
+    .location-header {
+        flex-basis: 45%;
+    }
+
+        .location-subtitle {
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    
+        .location-title {
+            margin-bottom: 8px;
+        }
+    
+        .location-description {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+    .location-contacts {
+        flex-basis: 55%;
+        gap: 24px;
+    }
+
+    .location-map {
+        height: 350px;
+    }
+
+    .location-title {
+        font-size: 36px;
+    }
+}
