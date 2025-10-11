@@ -16,18 +16,22 @@
 
 .location-subtitle {
     margin-bottom: 8px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
+    line-height: 1.5;
+
 }
 
 .location-title {
     margin-bottom: 8px;
-    font-size: 40px;
-        line-height: 1.2;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 1.2;
 }
 
 .location-description {
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 1.5;
 }
 
@@ -56,8 +60,8 @@
 }
 
 .location-contact-label {
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 20px;
     line-height: 1.5;
     color: #0b0500;
 }
@@ -65,7 +69,7 @@
 .location-text,
 .location-link {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.5;
     color: #0b0500;
 }
@@ -91,8 +95,8 @@
 /* TABLET (768px+) */
 @media only screen and (min-width: 768px) {
     .container-location {
-            padding: 64px 32px;
-        }
+        padding: 64px 32px;
+    }
 
     .location-info {
         flex-direction: row;
@@ -103,31 +107,76 @@
     }
 
     .location-header {
-        flex-basis: 45%;
+        flex-basis: 336px;
     }
 
-        .location-subtitle {
-            margin-bottom: 8px;
-            font-size: 16px;
-            font-weight: 600;
-        }
-    
-        .location-title {
-            margin-bottom: 8px;
-        }
-    
-        .location-description {
-            font-size: 18px;
-            line-height: 1.5;
-        }
+    .location-subtitle {
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .location-title {
+        margin-bottom: 8px;
+    }
+
+    .location-description {
+        font-size: 18px;
+        line-height: 1.5;
+    }
 
     .location-contacts {
-        flex-basis: 55%;
+        flex-basis: 336px;
         gap: 24px;
     }
 
     .location-map {
-        height: 395px;
+        height: 350px;
     }
 
+    .location-title {
+        font-size: 36px;
+    }
+}
+
+/* DESKTOP (1440px+) */
+@media only screen and (min-width: 1440px) {
+    .container-location {
+        padding: 64px 64px 106px 64px;
+    }
+
+    .location-info {
+        gap: 96px;
+        margin-bottom: 80px;
+    }
+
+    .location-header {
+        flex-basis: 732px;
+    }
+
+    .location-contacts {
+        flex-basis: 500px;
+    }
+
+    .location-title {
+        margin-bottom: 12px;
+    }
+
+    .location-description {
+        margin-bottom: 48px;
+        font-size: 20px;
+    }
+
+    .location-map {
+        height: 738px;
+    }
+
+    .location-contact-label {
+        font-size: 20px;
+    }
+
+    .location-text,
+    .location-link {
+        font-size: 20px;
+    }
 }
