@@ -1,4 +1,5 @@
 import './js/hero.js';
+/* import './js/menu.js'; */
 import { getCategoryList } from './js/api-functions.js';
 import { renderCategoryList } from './js/render-functions.js';
 
