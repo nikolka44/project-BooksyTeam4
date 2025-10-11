@@ -5,7 +5,7 @@
       See what our readers are saying about us!
     </p>
     <div class="feedbacks__slider swiper-feedbacks">
-      <ul class="feedbacks__list swiper-wrapper">
+      <ul class="feedbacks__list swiper-wrapper" role="list">
         <li class="feedbacks__elements swiper-slide">
           <p class="feedbacks__elements-text">
             Great selection, fast delivery, and beautifully packaged books. My
@@ -16,8 +16,10 @@
               src="../img/feedbacks/Feedback-people-1-min.png"
               alt="Jane Doe"
             />
-            <p class="feedbacks__people-name">Jane Doe</p>
-            <p class="feedbacks__people-user">Book Lover, Reader</p>
+            <div class="feedbacks__people-text">
+              <p class="feedbacks__people-name">Jane Doe</p>
+              <p class="feedbacks__people-user">Book Lover, Reader</p>
+            </div>
           </div>
         </li>
         <li class="feedbacks__elements swiper-slide">
@@ -30,8 +32,10 @@
               src="../img/feedbacks/Feedback-people-2-min.png"
               alt="John Smith"
             />
-            <p class="feedbacks__people-name">John Smith</p>
-            <p class="feedbacks__people-user">Editor, BookMag</p>
+            <div class="feedbacks__people-text">
+              <p class="feedbacks__people-name">John Smith</p>
+              <p class="feedbacks__people-user">Editor, BookMag</p>
+            </div>
           </div>
         </li>
         <li class="feedbacks__elements swiper-slide">
@@ -44,8 +48,10 @@
               src="../img/feedbacks/Feedback-people-3-min.png"
               alt="Emily Johnson"
             />
-            <p class="feedbacks__people-name">Emily Johnson</p>
-            <p class="feedbacks__people-user">Author, Novelist</p>
+            <div class="feedbacks__people-text">
+              <p class="feedbacks__people-name">Emily Johnson</p>
+              <p class="feedbacks__people-user">Author, Novelist</p>
+            </div>
           </div>
         </li>
         <li class="feedbacks__elements swiper-slide">
@@ -58,8 +64,10 @@
               src="../img/feedbacks/Feedback-people-2-min.png"
               alt="Bob Tall"
             />
-            <p class="feedbacks__people-name">Bob Tall</p>
-            <p class="feedbacks__people-user">Reader</p>
+            <div class="feedbacks__people-text">
+              <p class="feedbacks__people-name">Bob Tall</p>
+              <p class="feedbacks__people-user">Reader</p>
+            </div>
           </div>
         </li>
       </ul>
@@ -69,13 +77,13 @@
         <div class="feedbacks__dots-elem"></div>
       </div>
       <div class="feedbacks__btn-slider">
-        <button class="feedbacks__btn feedbacks__btn--prev">
-          <svg width="14" height="14">
+        <button type="button" class="feedbacks__btn feedbacks__btn--prev">
+          <svg>
             <use href="../img/feedbacks/symbol-defs.svg#icon-prev-feed"></use>
           </svg>
         </button>
-        <button class="feedbacks__btn feedbacks__btn--next">
-          <svg width="14" height="14">
+        <button type="button" class="feedbacks__btn feedbacks__btn--next">
+          <svg>
             <use href="../img/feedbacks/symbol-defs.svg#icon-next-feed"></use>
           </svg>
         </button>

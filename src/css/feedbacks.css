@@ -1,0 +1,122 @@
+.swiper-feedbacks {
+  overflow: hidden;
+}
+.feedbacks__list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.feedbacks__elements {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border: 1px solid rgba(11, 5, 0, 0.15);
+  border-radius: 16px;
+  padding: 32px;
+}
+.feedbacks__btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(11, 5, 0, 0.15);
+  padding: 0;
+  background: #d55a00;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s, background-color 0.2s;
+}
+.feedbacks__btn:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+.feedbacks__btn:hover {
+  transform: translateY(-1px);
+  background-color: #fceee6;
+}
+.feedbacks__btn:hover svg {
+    fill: #0b0500;
+    transform: translateY(-1px);
+}
+.feedbacks__btn.is-disabled {
+  background: #d55a00;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.2;
+  border: 1px solid rgba(11, 5, 0, 0.15);
+}
+.feedbacks__btn.is-disabled svg {
+    fill: #0b0500;
+}
+.feedbacks__btn svg {
+    fill: #fff;
+    width: 24px;
+    height: 25px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+.feedbacks__btn:active {
+    background-color: #5a2502;
+}
+.feedbacks__btn:active svg {
+    fill: #fff;
+}
+.feedbacks__btn:focus-visible {
+    background-color: #fceee6;
+}
+.feedbacks__btn:focus-visible svg {
+    fill: #0b0500;
+}
+.feedbacks__dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.feedbacks__dots-elem {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0b0500;
+  opacity: 0.2;
+  display: inline-block;
+  cursor: pointer;
+}
+.feedbacks__dots-elem.is-active {
+  background: #0b0500;
+  opacity: 1;
+}
+.feedbacks__btn-slider {
+    display: flex;
+    gap: 16px;
+}
+.feedbacks__navigations {
+    display: flex;
+    margin-top: 32px;
+}
+.feedbacks__container {
+    padding: 0 16px;
+}
+.feedbacks__title {
+    margin-bottom: 24px;
+}
+.feedbacks__title-text {
+    margin-bottom: 80px;
+    font-weight: 400;
+    font-size: 18px;
+}
+.feedbacks__elements-text {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+.feedbacks__people {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    align-items: center;
+}
+.feedbacks__people-name {
+    font-size: 16px;
+    font-weight: 600;
+}
+.feedbacks__people-user {
+    font-size: 16px;
+}

@@ -37,3 +37,28 @@ export function renderCategoryList(categories) {
     }
   });
 }
+
+// відмальовуємо список книг:
+export function renderBookCardlist(topbooks) {
+  const markupBooks = topbooks
+    .map(
+      ({
+        _id,
+        book_image,
+        description,
+        title,
+        author,
+        price,
+      }) => `<li class="books-card" data-id="${_id}>
+        <img class="books-card-image" src="${book_image}" alt="${description}" />
+        <div class="books-card-text-wrapper">
+          <h3 class="books-card-title">${title}</h3>
+          <p class="books-card-author">${author}</p>
+        </div>
+        <p class="books-card-price">${price}</p>
+        <button class="books-card-btn" type="button">Learn More</button>
+      </li>`
+    )
+    .join('');
+  refs.bookCardlist.innerHTML = markupBooks;
+}
