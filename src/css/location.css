@@ -1,31 +1,16 @@
 /* ========== MOBILE (320px+) ========== */
-.location {
-    background-color: #fceee6;
-}
-
 .location-subtitle {
     margin-bottom: 8px;
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: 6git status00;
+    font-size: 16px;
     line-height: 1.5;
-    color: #0b0500;
-}
-
-.location-title {
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    color: #0b0500;
 }
 
 .location-description {
     margin-bottom: 32px;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
-    color: #0b0500;
 }
 
 .location-wrapper {
