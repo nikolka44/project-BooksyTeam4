@@ -1,0 +1,31 @@
+.container-article {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 64px 16px;
+}
+.article-title {
+  margin-bottom: 24px;
+}
+.article-text {
+  font-size: 18px;
+}
+.article-img {
+  border-radius: 16px;
+}
+@media only screen and (min-width: 768px) {
+  .container-article {
+    padding: 64px 32px;
+  }
+}
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1440px) {
+  .container-article {
+    padding: 64px;
+    flex-direction: row;
+    align-items: center;
+  }
+  .article-box {
+    max-width: calc((100% - 24px) / 2);
+  }
+}
