@@ -127,10 +127,7 @@
     }
 
     .location-map {
-        height: 350px;
+        height: 395px;
     }
 
-    .location-title {
-        font-size: 36px;
-    }
 }
