@@ -3,6 +3,10 @@ import {
   renderCategoryList,
   renderBookCardlist,
 } from './js/render-functions.js';
+import './js/hero.js';
+import './js/feedbacks.js';
+import { getCategoryList } from './js/api-functions.js';
+import { renderCategoryList } from './js/render-functions.js';
 
 async function initCategories() {
   try {
