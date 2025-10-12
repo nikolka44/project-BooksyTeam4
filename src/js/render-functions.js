@@ -102,15 +102,15 @@ export function renderBookModal(book) {
       <div class="book-modal-details">
         <details>
           <summary>Details</summary>
-          <p>${book.description}</p>
+          <p>${book.description || book.title}</p>
         </details>
         <details>
           <summary>Shipping</summary>
-          <p>We ship across the US within 2–5 business days.</p>
+          <p>We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier service. Enjoy free standard shipping on orders over $50.</p>
         </details>
         <details>
           <summary>Returns</summary>
-          <p>You can return an item within 14 days if unused and in original condition.</p>
+          <p>You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original condition. To start a return, please contact our support team — we’ll guide you through the process quickly and hassle-free.</p>
         </details>
       </div>
     </div>
