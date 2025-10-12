@@ -14,6 +14,9 @@
   padding: 32px;
 }
 .feedbacks__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 48px;
   height: 48px;
   border: 1px solid rgba(11, 5, 0, 0.15);
