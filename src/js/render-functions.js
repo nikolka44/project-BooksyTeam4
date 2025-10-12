@@ -1,6 +1,6 @@
 import { refs } from './refs.js';
 
-export function renderCategoryList(categories) {
+export function renderCategoryDpopList(categories) {
   // додаємо "All categories" на початок
   // const allCategories = ['All categories', ...categories];
   // або:
@@ -38,6 +38,15 @@ export function renderCategoryList(categories) {
   });
 }
 
+export function renderCategories(categories) {
+  const markuoCategories = categories
+    .map(
+      category =>
+        `<li class="books__filter" data-category="${category}">${category}</li>`
+    )
+    .join('');
+  refs.categoriesList.innerHTML = markuoCategories;
+}
 // відмальовуємо список книг:
 export function renderBookCardlist(topbooks) {
   const markupBooks = topbooks
@@ -55,10 +64,10 @@ export function renderBookCardlist(topbooks) {
           <h3 class="books-card-title">${title}</h3>
           <p class="books-card-author">${author}</p>
         </div>
-        <p class="books-card-price">${price}</p>
+        <p class="books-card-price">$${price}</p>
         <button class="books-card-btn" type="button">Learn More</button>
       </li>`
     )
     .join('');
-  refs.bookCardlist.innerHTML = markupBooks;
+  refs.bookCardList.innerHTML = markupBooks;
 }

@@ -1,3 +1,7 @@
+/* MOBILE + TABLET */
+.categories-list {
+  display: none;
+}
 .dropdown {
   position: relative;
   width: 100%;
@@ -90,6 +94,30 @@
 .dropdown-menu::-webkit-scrollbar-thumb {
   background-color: #ff8c00;
   border-radius: 6px;
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1440px) {
+  .books-section .container {
+    display: flex;
+  }
+  .books-categories-wrapper {
+    width: 308px;
+  }
+  .books-list-wrapper {
+    width: 980px;
+  }
+  .dropdown-wrapper {
+    display: none;
+  }
+
+  .categories-list {
+    display: block;
+  }
+
+  .dropdown {
+    display: none;
+  }
 }
 
 /* На десктопі — ховаємо
