@@ -1,162 +1,107 @@
-console.log('Events.js loaded'); // ✅ Для перевірки
-
-// Чекаємо завантаження DOM
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded fired in events.js');
-  // ========== SLIDER LOGIC ==========
-  const slider = document.querySelector('.events-list');
-  const slides = document.querySelectorAll('.event-item');
-  const prevBtn = document.querySelector('.slider-btn.prev');
-  const nextBtn = document.querySelector('.slider-btn.next');
-  const paginationDots = document.querySelectorAll('.pagination-dot');
+  const list = document.querySelector('.events-list');
+  if (!list) return;
 
-  if (!slider || !slides.length) {
-    console.error('Slider elements not found');
-    return;
+  const cards = document.querySelectorAll('.item-card');
+  const container = document.querySelector('.events-container');
+
+  // Создаем элементы управления
+  const controls = document.createElement('div');
+  controls.className = 'slider-controls';
+  controls.innerHTML = `
+    <div class="dots"></div>
+    <div class="arrows">
+      <button class="slider-btn prev" aria-label="Previous slide">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.707 12.5049L4.414 8.21188H14V6.21188H4.414L8.707 1.91888L7.293 0.504883L0.585999 7.21188L7.293 13.9189L8.707 12.5049Z" fill="white"/>
+        </svg>
+      </button>
+      <button class="slider-btn next" aria-label="Next slide">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.293 12.5049L6.707 13.9189L13.414 7.21188L6.707 0.504883L5.293 1.91888L9.586 6.21188H0V8.21188H9.586L5.293 12.5049Z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+  `;
+  container.appendChild(controls);
+
+  const dotsContainer = controls.querySelector('.dots');
+  const prevBtn = controls.querySelector('.prev');
+  const nextBtn = controls.querySelector('.next');
+
+  let current = 0;
+  let slidesToShow = 1;
+
+  // === Создание точек ===
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    const totalDots =
+      slidesToShow === 1 ? cards.length : cards.length - slidesToShow + 1;
+    for (let i = 0; i < totalDots; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dotsContainer.appendChild(dot);
+    }
   }
 
-  let currentIndex = 0;
-
-  function getVisibleCount() {
-    if (window.innerWidth >= 1440) return 3;
-    if (window.innerWidth >= 768) return 2;
-    return 1;
-  }
-
+  // === Обновление отображения ===
   function updateSlider() {
-    const visible = getVisibleCount();
-    
-        // Для мобільної та планшета
-    const slideWidth = slides[0].offsetWidth;
-    const gap = window.innerWidth >= 768 ? 24 : 24;
-    const offset = currentIndex * (slideWidth + gap);
-    
-    slider.style.transform = `translateX(-${offset}px)`;
-    
-    // Оновлення кнопок
-    const maxIndex = Math.max(0, slides.length - visible);
-    if (prevBtn) prevBtn.disabled = currentIndex === 0;
-    if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
-    
-    // Оновлення пагінації
-    paginationDots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
+    const total = cards.length;
+    cards.forEach((card, i) => {
+      card.style.display =
+        i >= current && i < current + slidesToShow ? 'flex' : 'none';
     });
+
+    const dots = dotsContainer.querySelectorAll('.dot');
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+
+    // --- Обновляем состояние стрелок ---
+    prevBtn.classList.toggle('is-disabled', current === 0);
+    nextBtn.classList.toggle('is-disabled', current >= total - slidesToShow);
   }
 
-  // Кнопки навігації
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      const visible = getVisibleCount();
-      const maxIndex = Math.max(0, slides.length - visible);
-      if (currentIndex < maxIndex) {
-        currentIndex++;
-        updateSlider();
-      }
-    });
-  }
+  // === Проверка ширины окна ===
+  function checkViewport() {
+    const width = window.innerWidth;
 
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
-      }
-    });
-  }
-
-  // Пагінація - клік по точках
-  paginationDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      const visible = getVisibleCount();
-      const maxIndex = Math.max(0, slides.length - visible);
-      currentIndex = Math.min(index, maxIndex);
+    if (width >= 1440) {
+      slidesToShow = cards.length;
+      cards.forEach(card => (card.style.display = 'flex'));
+      controls.style.display = 'none';
+    } else {
+      slidesToShow = width < 768 ? 1 : 2;
+      controls.style.display = 'flex';
+      current = 0;
+      createDots();
       updateSlider();
-    });
-  });
+    }
+  }
 
-  // Оновлення при зміні розміру екрана
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const visible = getVisibleCount();
-      const maxIndex = Math.max(0, slides.length - visible);
-      if (currentIndex > maxIndex) {
-        currentIndex = maxIndex;
-      }
+  // === Навигация стрелками ===
+  nextBtn.addEventListener('click', () => {
+    const total = cards.length;
+    if (current < total - slidesToShow) {
+      current++;
       updateSlider();
-    }, 100);
-  });
-
-  // Ініціалізація
-  updateSlider();
-
-  // ========== MODAL LOGIC ==========
-  const modal = document.getElementById('eventModal');
-  const modalEventName = document.getElementById('modalEventName');
-  const modalClose = document.querySelector('.modal-close');
-  const eventForm = document.getElementById('eventForm');
-  const eventButtons = document.querySelectorAll('.event-btn');
-
-  if (!modal || !modalEventName || !modalClose || !eventForm) {
-    console.error('Modal elements not found');
-    return;
-  }
-
-  console.log('Found event buttons:', eventButtons.length);
-
-  // Відкриття модального вікна
-  eventButtons.forEach((btn, index) => {
-    console.log(`Setting up button ${index}`, btn);
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const eventName = btn.getAttribute('data-event');
-      console.log('Button clicked, event:', eventName);
-      modalEventName.textContent = eventName;
-      modal.classList.remove('is-hidden');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  // Закриття модального вікна
-  function closeModal() {
-    modal.classList.add('is-hidden');
-    document.body.style.overflow = '';
-    eventForm.reset();
-  }
-
-  modalClose.addEventListener('click', (e) => {
-    e.preventDefault();
-    closeModal();
-  });
-
-  // Закриття по кліку на backdrop
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
     }
   });
 
-  // Закриття по Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('is-hidden')) {
-      closeModal();
+  prevBtn.addEventListener('click', () => {
+    if (current > 0) {
+      current--;
+      updateSlider();
     }
   });
 
-  // Відправка форми
-  eventForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(eventForm);
-    const data = Object.fromEntries(formData);
-    
-    console.log('Form submitted:', data);
-    
-    // Показати повідомлення
-    alert(`Thank you for registering for "${modalEventName.textContent}"! We'll contact you soon.`);
-    
-    closeModal();
+  // === Навигация по точкам ===
+  dotsContainer.addEventListener('click', e => {
+    if (!e.target.classList.contains('dot')) return;
+    const index = Array.from(dotsContainer.children).indexOf(e.target);
+    current = index;
+    updateSlider();
   });
+
+  // === Слушатель ресайза ===
+  window.addEventListener('resize', checkViewport);
+  checkViewport();
 });
