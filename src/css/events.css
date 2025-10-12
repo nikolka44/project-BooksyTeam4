@@ -143,7 +143,6 @@
     bottom: 20px;
     background: #d74e09;
     border: none;
-    border-radius: 8px;
     width: 48px;
     height: 48px;
     display: flex;
@@ -169,7 +168,7 @@
 }
 
 .slider-btn:hover:not(:disabled) {
-    background-color: #f29b38;
+    background-color: #e15d05;
 }
 
 .slider-btn:disabled {
