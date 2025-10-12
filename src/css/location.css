@@ -1,5 +1,7 @@
 /* MOBILE (320px+) */
 .container-location {
+    max-width: 375px;
+    margin: 0 auto;
     padding: 64px 16px;
 }
 
@@ -95,8 +97,10 @@
 /* TABLET (768px+) */
 @media only screen and (min-width: 768px) {
     .container-location {
-        padding: 64px 32px;
-    }
+            max-width: 768px;
+            margin: 0 auto;
+            padding: 64px 32px;
+        }
 
     .location-info {
         flex-direction: row;
@@ -142,8 +146,10 @@
 /* DESKTOP (1440px+) */
 @media only screen and (min-width: 1440px) {
     .container-location {
-        padding: 64px 64px 106px 64px;
-    }
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 64px;
+        }
 
     .location-info {
         gap: 96px;
