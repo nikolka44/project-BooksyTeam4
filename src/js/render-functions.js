@@ -1,64 +1,69 @@
 import { refs } from './refs.js';
 
-export function renderCategoryDpopList(categories) {
+export function renderCategoryDropList(categories) {
   // додаємо "All categories" на початок
-  // const allCategories = ['All categories', ...categories];
+  //categories.unshift('All');
   // або:
-  categories.unshift('All');
-  const markup = categories
+  // не мутуємо вхідний масив (щоб уникнути побічних ефектів)
+  const allCategories = ['All categories', ...categories];
+  const markup = allCategories
     .map(category => `<li class="dropdown-item">${category}</li>`)
     .join('');
   refs.dropdownMenu.innerHTML = markup;
 
   // відкриття/закриття меню
-  refs.dropdownToggle.addEventListener('click', e => {
-    e.stopPropagation(); // щоб клік не закрив меню одразу
-    refs.dropdownMenu.classList.toggle('open');
-    refs.dropdownToggle.classList.toggle('active');
-  });
+  // refs.dropdownToggle.addEventListener('click', e => {
+  //   e.stopPropagation(); // щоб клік не закрив меню одразу
+  //   refs.dropdownMenu.classList.toggle('open');
+  //   refs.dropdownToggle.classList.toggle('active');
+  // });
 
   // вибір категорії
-  refs.dropdownMenu.addEventListener('click', e => {
-    if (e.target.classList.contains('dropdown-item')) {
-      refs.dropdownToggle.textContent = e.target.textContent;
-      refs.dropdownMenu.classList.remove('open');
-      refs.dropdownToggle.classList.remove('active');
-    }
-  });
+  // refs.dropdownMenu.addEventListener('click', e => {
+  //   if (e.target.classList.contains('dropdown-item')) {
+  //     refs.dropdownToggle.textContent = e.target.textContent;
+  //     refs.dropdownMenu.classList.remove('open');
+  //     refs.dropdownToggle.classList.remove('active');
+  //   }
+  // });
 
   // автозакриття при кліку поза меню
-  document.addEventListener('click', e => {
-    if (
-      !refs.dropdownMenu.contains(e.target) &&
-      !refs.dropdownToggle.contains(e.target)
-    ) {
-      refs.dropdownMenu.classList.remove('open');
-      refs.dropdownToggle.classList.remove('active');
-    }
-  });
+  // document.addEventListener('click', e => {
+  //   if (
+  //     !refs.dropdownMenu.contains(e.target) &&
+  //     !refs.dropdownToggle.contains(e.target)
+  //   ) {
+  //     refs.dropdownMenu.classList.remove('open');
+  //     refs.dropdownToggle.classList.remove('active');
+  //   }
+  // });
 }
 
+// Рендер десктопного списку категорій
 export function renderCategories(categories) {
-  const markuoCategories = categories
+  // не мутуємо вхідний масив (щоб уникнути побічних ефектів)
+  const allCategories = ['All categories', ...categories];
+  const markuoCategories = allCategories
     .map(
       category =>
-        `<li class="books__filter" data-category="${category}">${category}</li>`
+        `<li class="categories-item" data-category="${category}">${category}</li>`
     )
     .join('');
   refs.categoriesList.innerHTML = markuoCategories;
 }
-// відмальовуємо список книг:
+
+// Рендер списку книг (отримуєш вже відфільтрований або обрізаний масив)
 export function renderBookCardlist(topbooks) {
   const markupBooks = topbooks
     .map(
       ({
         _id,
         book_image,
-        description,
+        description = 'description || title',
         title,
         author,
         price,
-      }) => `<li class="books-card" data-id="${_id}>
+      }) => `<li class="books-card" data-id="${_id}">
         <img class="books-card-image" src="${book_image}" alt="${description}" />
         <div class="books-card-text-wrapper">
           <h3 class="books-card-title">${title}</h3>
@@ -70,4 +75,49 @@ export function renderBookCardlist(topbooks) {
     )
     .join('');
   refs.bookCardList.innerHTML = markupBooks;
+}
+
+// Ініціалізація поведінки dropdown (додає слухачі один раз)
+export function initDropdownBehavior() {
+  const toggle = refs.dropdownToggle;
+  const menu = refs.dropdownMenu;
+
+  if (!toggle || !menu) return;
+
+  // Якщо вже ініціалізовано — не додаємо слухачі вдруге
+  if (toggle.dataset.dropdownInited === 'true') return;
+
+  // відкриття / закриття меню
+  toggle.addEventListener('click', e => {
+    e.stopPropagation();
+    menu.classList.toggle('open');
+    toggle.classList.toggle('active');
+  });
+
+  // вибір категорії
+  menu.addEventListener('click', e => {
+    const item = e.target.closest('.dropdown-item');
+    if (!item) return;
+    toggle.textContent = item.textContent;
+    menu.classList.remove('open');
+    toggle.classList.remove('active');
+
+    // корисний хук: диспатчимо власну подію, щоб інші модулі могли відреагувати
+    const category = item.dataset.category;
+    const event = new CustomEvent('category:selected', {
+      detail: { category },
+    });
+    document.dispatchEvent(event);
+  });
+
+  // автозакриття при кліку поза меню
+  document.addEventListener('click', e => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+      menu.classList.remove('open');
+      toggle.classList.remove('active');
+    }
+  });
+
+  // мітка, що вже ініціалізовано
+  toggle.dataset.dropdownInited = 'true';
 }
