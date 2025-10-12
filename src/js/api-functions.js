@@ -2,6 +2,13 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://books-backend.p.goit.global';
 
+// Універсальна функція обробки помилок
+function handleError(error, source) {
+  console.error(`${source} error:`, error.message || error);
+  throw error;
+}
+
+// 🔹 Отримати всі категорії
 export async function getCategoryList() {
   try {
     const response = await axios.get(`/books/category-list`);
@@ -12,11 +19,11 @@ export async function getCategoryList() {
       .map(item => item.list_name);
     return categories;
   } catch (error) {
-    console.error('getCategoryList error:', error);
-    throw error;
+    handleError(error, 'getCategoryList');
   }
 }
 
+// 🔹 Отримати топ книги
 export async function getTopBooks() {
   try {
     const response = await axios.get('/books/top-books');
@@ -26,29 +33,30 @@ export async function getTopBooks() {
     // console.log(topbooks);
     return topbooks;
   } catch (error) {
-    console.error('getTopBooks error:', error);
-    throw error;
+    handleError(error, 'getTopBooks');
   }
 }
+
+// 🔹 Отримати книги певної категорії
 export async function getBooksByCategory(category) {
   try {
-    const { data } = await axios.get(`/books/category?category`, {
+    const { data } = await axios.get(`/books/category`, {
       params: { category },
     });
     console.log(data);
 
     return data;
   } catch (error) {
-    console.error('getBooksByCategory error:', error);
-    throw error;
+    handleError(error, 'getBooksByCategory');
   }
 }
+
+// 🔹 Отримати книгу за ID
 export async function getBookById(id) {
   try {
     const { data } = await axios.get(`/books/${id}`);
     return data;
   } catch (error) {
-    console.error('getBookById error:', error);
-    throw error;
+    handleError(error, 'getBookById');
   }
 }

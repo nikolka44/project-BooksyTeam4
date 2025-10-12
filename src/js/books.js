@@ -1,84 +1,97 @@
+import { refs } from './refs.js';
 import {
   getCategoryList,
   getTopBooks,
   getBooksByCategory,
-  getBookById,
 } from './api-functions.js';
-
 import {
   renderCategories,
-  renderCategoryDpopList,
+  renderCategoryDropList,
   renderBookCardlist,
+  initDropdownBehavior,
 } from './render-functions.js';
 
-export async function initCategories() {
-  try {
-    const categories = await getCategoryList();
-    // тут можна рендерити категорії в DOM
-    renderCategoryDpopList(categories);
-  } catch (error) {
-    console.error(error);
-  }
+// ====== Глобальні змінні ======
+let currentBooks = []; // усі завантажені книги
+let currentCategory = 'All categories'; // поточна категорія
+
+// ====== Функція визначає, скільки книг показати ======
+function getLimit() {
+  return window.innerWidth < 768 ? 10 : 24;
 }
-initCategories();
 
-export async function initCategoriesDesk() {
-  try {
-    const categories = await getCategoryList();
-    // тут можна рендерити категорії в DOM
-    renderCategories(categories);
-  } catch (error) {
-    console.error(error);
-  }
+// ====== Функція відмалювання книг (без нових запитів) ======
+function renderVisibleBooks() {
+  const limit = getLimit();
+  const visibleBooks = currentBooks.slice(0, limit);
+  renderBookCardlist(visibleBooks);
 }
-initCategoriesDesk();
 
-async function initBooks() {
+// ====== Завантаження категорії (один запит) ======
+async function loadBooksByCategory(category) {
   try {
-    const topbooks = await getTopBooks();
+    currentCategory = category;
+    let booksData;
 
-    // ✅ Визначаємо ширину екрана
-    const screenWidth = window.innerWidth;
-
-    // ✅ Залежно від розміру екрана — обрізаємо масив
-    const limitedBooks =
-      screenWidth < 768 ? topbooks.slice(0, 10) : topbooks.slice(0, 24);
-
-    renderBookCardlist(limitedBooks);
-  } catch (error) {
-    console.error('initBooks error:', error);
-  }
-}
-initBooks();
-
-/* TECTУВАННЯ API  */
-/*
-    export async function testAPI() {
-      try {
-        console.log('📘 Тест 1: getCategoryList()');
-        const categories = await getCategoryList();
-        console.log('✅ Отримані категорії:', categories);
-        console.log('----------------------------------');
-    
-        console.log('📚 Тест 2: getTopBooks()');
-        const topBooks = await getTopBooks();
-        console.log('✅ Отримані топ-книги (перша книга):', topBooks[0]);
-        console.log('----------------------------------');
-    
-        console.log('📗 Тест 3: getBooksByCategory()');
-        // використовуємо першу категорію зі списку, щоб не писати вручну
-        const booksByCategory = await getBooksByCategory(categories[0]);
-        console.log(`✅ Книги з категорії "${categories[0]}":`, booksByCategory);
-        console.log('----------------------------------');
-    
-        console.log('📙 Тест 4: getBookById()');
-        // беремо id першої книги з попереднього запиту
-        const bookDetails = await getBookById(booksByCategory[0]._id);
-        console.log('✅ Деталі книги:', bookDetails);
-        console.log('----------------------------------');
-      } catch (error) {
-        console.error('❌ Помилка під час тестування API:', error);
-      }
+    if (category === 'All categories' || category === 'All' || !category) {
+      booksData = await getTopBooks();
+    } else {
+      booksData = await getBooksByCategory(category);
     }
-    testAPI();
-*/
+
+    // Зберігаємо результат
+    currentBooks = booksData;
+    renderVisibleBooks();
+  } catch (error) {
+    console.error('loadBooksByCategory error:', error);
+  }
+}
+
+// ====== Ініціалізація категорій ======
+async function initCategories() {
+  try {
+    const categories = await getCategoryList();
+    renderCategoryDropList(categories);
+    renderCategories(categories);
+    initDropdownBehavior();
+
+    // слухачі для dropdown
+    refs.dropdownMenu.addEventListener('click', e => {
+      const item = e.target.closest('.dropdown-item');
+      if (!item) return;
+      const category = item.dataset.category || item.textContent.trim();
+      refs.dropdownToggle.textContent = item.textContent.trim();
+      loadBooksByCategory(category);
+    });
+
+    // слухачі для desktop списку
+    refs.categoriesList.addEventListener('click', e => {
+      const item = e.target.closest('.categories-item');
+      if (!item) return;
+      const category = item.dataset.category || item.textContent.trim();
+
+      // візуально активна категорія
+      refs.categoriesList
+        .querySelectorAll('.categories-item')
+        .forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+
+      loadBooksByCategory(category);
+    });
+  } catch (error) {
+    console.error('initCategories error:', error);
+  }
+}
+
+// ====== Початкова ініціалізація ======
+async function initBooks() {
+  await initCategories();
+  await loadBooksByCategory('All categories');
+}
+
+// ====== При зміні ширини екрана — тільки перерендер локальних даних ======
+window.addEventListener('resize', () => {
+  renderVisibleBooks(); // без запитів, тільки зміна кількості
+});
+
+initBooks();
