@@ -1,8 +1,4 @@
-import { getCategoryList, getTopBooks } from './js/api-functions.js';
-import {
-  renderCategoryList,
-  renderBookCardlist,
-} from './js/render-functions.js';
+import './js/books.js';
 import './js/hero.js';
 import './js/feedbacks.js';
 import './js/events.js';
@@ -37,3 +33,4 @@ async function initBooks() {
   }
 }
 initBooks();
+import './js/menu.js';

@@ -18,3 +18,6 @@ document.querySelectorAll('.nav-link-mob').forEach(link =>
     document.body.style.overflow = '';
   })
 );
+
+console.log(document.querySelector('[data-menu-open]'));
+console.log(document.querySelector('[data-menu]'));
