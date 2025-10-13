@@ -117,6 +117,7 @@ async function initCategories() {
   }
 }
 
+
 // ====== Початкова ініціалізація ======
 async function initBooks() {
   await initCategories();
