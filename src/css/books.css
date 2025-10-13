@@ -6,17 +6,16 @@
 :root {
   --books-gap: 16px;
   --books-card-radius: 10px;
-  --books-bg: #fbefe8;
-  --books-card-bg: #ffffff;
-  --books-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial;
-  --books-accent: #ff8c00;
+  --books-bg: #fceee6;
+  --books-card-bg: #fceee6;
+  --books-font: 'Rubik', sans-serif;
+  --books-accent: #e15d05;
 }
 
 /* Контейнер секції */
 .books-section {
   background: var(--books-bg);
-  padding: 20px 16px;
+  padding: 32px;
   font-family: var(--books-font);
   box-sizing: border-box;
 }
@@ -30,26 +29,26 @@
 
 /* Загальні обгортки */
 .books-categories-wrapper {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 /* Заголовок та лічильник (у мобільній — стовпчиком) */
 .books-title-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 12px;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 .books-subtitle {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
+  line-height: 1.5;
   margin: 0;
 }
 .books-counter {
+  font-weight: 400;
   font-size: 14px;
-  color: #333;
+  color: #0b0500;
   margin: 0;
-  align-self: flex-start;
 }
 
 /* --- Mobile / Tablet: show dropdown, hide desktop list --- */
@@ -61,26 +60,28 @@
 .dropdown {
   position: relative;
   width: 100%;
-  max-width: 340px;
+  max-width: 342px;
   font-family: var(--books-font);
-  margin-bottom: 12px;
+  background: rgba(11, 5, 0, 0.05);
+  border: 1px solid rgba(11, 5, 0, 0.15);
+  border-radius: 8px;
 }
 
 .dropdown-toggle {
   width: 100%;
-  background: #f5f5f5;
-  border: 1px solid #d0d0d0;
+  background: rgba(11, 5, 0, 0.05);
+  border: 1px solid rgba(11, 5, 0, 0.15);
   border-radius: 8px;
   padding: 12px 16px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
   text-align: left;
   cursor: pointer;
   position: relative;
-  transition: background 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 .dropdown-toggle:hover {
-  background: #eee;
+  background: #ea8d50;
 }
 .dropdown-toggle::after {
   content: '';
@@ -124,8 +125,8 @@
 }
 .dropdown-item {
   padding: 12px 16px;
-  font-size: 15px;
-  color: #111;
+  font-size: 14px;
+  color: #0b0500;
   cursor: pointer;
 }
 .dropdown-item:hover {
@@ -190,39 +191,50 @@
 
 /* Кнопка */
 .books-card-btn {
-  margin: 8px 12px 12px;
-  background: var(--books-accent);
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
+  margin-bottom: 24px;
+  background-color: #fff;
+  border: 1px solid #0b0500;
+  border-radius: 4px;
+  padding: 8px 20px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0500;
 }
 .books-card-btn:hover {
   opacity: 0.95;
+  background-color: #fff;
+  background-color: var(--books-accent);
 }
-
-/* Show More */
+/* Show More Button */
 .show-more-btn {
-  display: block;
-  margin: 18px auto 0;
-  padding: 10px 18px;
-  border-radius: 8px;
-  background: #222;
-  color: #fff;
-  border: none;
+  max-width: 342px;
+  width: 100%;
+  padding: 12px 24px;
+  border: 1px solid #e15d05;
+  border-radius: 4px;
+  background: var(--books-accent);
   cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.show-more-btn:hover {
+  background-color: #e15d05;
+  color: #fff;
+  opacity: 0.95;
+}
+.show-more-btn.is-hidden {
+  display: none;
 }
 
 /* =========================
    Tablet (>=768px)
    ========================= */
 @media (min-width: 768px) {
-  .books-section {
-    padding: 28px 20px;
-  }
-
   /* сітка: tablet — 2 колонки (великие картинки) */
   .books-cards-list {
     grid-template-columns: repeat(2, 1fr);
@@ -231,7 +243,13 @@
   .books-card-image {
     height: 300px;
   }
-
+  /* Show More Button */
+  .show-more-btn {
+    width: 342px;
+    margin: 0, auto;
+    align-items: center;
+    justify-content: center;
+  }
   /* сховаємо десктопний список у середньому breakpoint — хочеш щоб dropdown показувався на планшеті, так як ти просила */
   .categories-list {
     display: none;
@@ -245,10 +263,6 @@
    Desktop (>=1440px)
    ========================= */
 @media (min-width: 1440px) {
-  .books-section {
-    padding: 36px 20px;
-  }
-
   /* layout: container → two columns: left narrow, right flexible */
   .books-section .container {
     display: flex;
@@ -321,46 +335,4 @@
     position: sticky;
     top: 24px;
   }
-}
-
-/* Бекдроп модалки */
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5); /* затемнення */
-  z-index: 1000;
-}
-
-/* Модалка */
-.book-modal {
-  background: #fff;
-  border-radius: 10px;
-  max-width: 600px;
-  width: 90%;
-  padding: 20px;
-  position: relative;
-  overflow-y: auto;
-  max-height: 90%;
-}
-
-/* Закрита модалка */
-.backdrop.is-hidden {
-  display: none;
-}
-
-/* Кнопка закриття */
-.modal-close-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
 }
