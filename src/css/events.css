@@ -41,8 +41,9 @@
 }
 .events-icon {
   margin-left: 8px;
-  width: 8px;
-  height: 11px;
+  width: 23px;
+  height: 23px;
+  vertical-align: middle;
 }
 .item-card {
   display: flex;
