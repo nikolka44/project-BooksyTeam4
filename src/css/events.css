@@ -27,7 +27,7 @@
   line-height: 1.4;
   letter-spacing: -0.01em;
 }
-.item-first-text {
+.item-text {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -41,11 +41,14 @@
 }
 .events-icon {
   margin-left: 8px;
+  width: 8px;
+  height: 11px;
 }
 .item-card {
   display: flex;
   flex-direction: column;
   align-items: start;
+  height: 545px;
 }
 .item-img {
   margin-bottom: 24px;
@@ -59,15 +62,14 @@
   background: #fceee6;
   border: none;
   margin-top: auto;
-  margin-bottom: 56px;
-} /* Контейнер под dots и стрелки */
+}
 .slider-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 32px;
+
   width: 100%;
-} /* Dots (слева) */
+}
 .dots {
   display: flex;
   gap: 8px;
@@ -84,12 +86,12 @@
 }
 .dot.active {
   opacity: 1;
-} /* Контейнер стрелок справа */
+}
 .arrows {
   display: flex;
   gap: 16px;
   align-items: center;
-} /* Стрелки */
+}
 .slider-btn {
   width: 48px;
   height: 48px;
@@ -107,19 +109,19 @@
   width: 24px;
   height: 24px;
   transition: fill 0.2s;
-} /* Hover */
+}
 .slider-btn:hover {
   background: #fceee6;
 }
 .slider-btn:hover svg {
   fill: #0b0500;
-} /* Active */
+}
 .slider-btn:active {
   background-color: #5a2502;
 }
 .slider-btn:active svg {
   fill: #fff;
-} /* Focus-visible */
+}
 .slider-btn:focus-visible {
   outline: rgba(11, 5, 0, 0.05);
   outline-offset: 2px;
@@ -127,31 +129,34 @@
 }
 .slider-btn:focus-visible svg {
   fill: #0b0500;
-} /* Disabled */
+}
 .slider-btn.is-disabled {
   opacity: 0.3;
   cursor: not-allowed;
   pointer-events: none;
+  background-color: #d55a00;
+}
+.slider-btn.is-disabled svg {
+  fill: #0b0500;
 }
 @media only screen and (min-width: 768px) {
   .item-picture {
     width: 340px;
   }
   .events-container {
-    max-width: 768px;
     padding: 64px 32px;
   }
   .events-list {
     display: flex;
     gap: 24px;
   }
-  .item-btn {
-    margin-bottom: 32px;
+
+  .item-card {
+    height: 521px;
   }
 }
 @media only screen and (min-width: 1440px) {
   .events-container {
-    max-width: 1440px;
     padding: 64px;
   }
   .item-picture {
@@ -160,9 +165,7 @@
   .item-img {
     width: 421px;
   }
-  .item-btn {
-    margin-bottom: 0px;
-  }
+
   .events-subtitle {
     width: 560px;
   }
