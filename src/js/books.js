@@ -3,6 +3,7 @@ import {
   getCategoryList,
   getTopBooks,
   getBooksByCategory,
+  getBookById,
 } from './api-functions.js';
 import {
   renderCategories,
@@ -10,6 +11,7 @@ import {
   renderBookCardlist,
   initDropdownBehavior,
 } from './render-functions.js';
+import { initBookModal } from './modal-book.js';
 
 // ====== Глобальні змінні ======
 let currentBooks = []; // усі завантажені книги
@@ -25,6 +27,7 @@ function renderVisibleBooks() {
   const limit = getLimit();
   const visibleBooks = currentBooks.slice(0, limit);
   renderBookCardlist(visibleBooks);
+  initBookModal();
 }
 
 // ====== Завантаження категорії (один запит) ======

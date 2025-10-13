@@ -77,6 +77,46 @@ export function renderBookCardlist(topbooks) {
   refs.bookCardList.innerHTML = markupBooks;
 }
 
+export function renderBookModal(book) {
+  return `
+    <div class="book-modal-wrapper">
+      <img
+        src="${book.book_image}"
+        alt="${book.title}"
+        class="book-modal-image"
+      />
+      <h2 class="book-modal-title">${book.title}</h2>
+      <p class="book-modal-author">${book.author}</p>
+      <p class="book-modal-price">$${book.price}</p>
+
+      <div class="book-modal-actions">
+        <div class="quantity-control">
+          <button class="qty-btn" data-action="decrease">-</button>
+          <span class="qty-value">1</span>
+          <button class="qty-btn" data-action="increase">+</button>
+        </div>
+        <button class="add-to-cart-btn">Add To Cart</button>
+        <button class="buy-now-btn">Buy Now</button>
+      </div>
+
+      <div class="book-modal-details">
+        <details>
+          <summary>Details</summary>
+          <p>${book.description || book.title}</p>
+        </details>
+        <details>
+          <summary>Shipping</summary>
+          <p>We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier service. Enjoy free standard shipping on orders over $50.</p>
+        </details>
+        <details>
+          <summary>Returns</summary>
+          <p>You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original condition. To start a return, please contact our support team — we’ll guide you through the process quickly and hassle-free.</p>
+        </details>
+      </div>
+    </div>
+  `;
+}
+
 // Ініціалізація поведінки dropdown (додає слухачі один раз)
 export function initDropdownBehavior() {
   const toggle = refs.dropdownToggle;
