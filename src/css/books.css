@@ -209,6 +209,8 @@
 }
 /* Show More Button */
 .show-more-btn {
+  display: block;
+  margin: 0 auto;
   max-width: 342px;
   width: 100%;
   padding: 12px 24px;

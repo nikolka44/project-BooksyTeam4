@@ -16,17 +16,37 @@ import { initBookModal } from './modal-book.js';
 // ====== Глобальні змінні ======
 let currentBooks = []; // усі завантажені книги
 let currentCategory = 'All categories'; // поточна категорія
+// Змінна для відстеження кількості видимих книг
+let visibleBooksCount = 0;
+//Константа для кількості книг, що додаються за клік
+const BOOKS_PER_PAGE = 4;
 
 // ====== Функція визначає, скільки книг показати ======
-function getLimit() {
+function getInitialLimit() {
   return window.innerWidth < 768 ? 10 : 24;
+}
+
+//  Функція для оновлення видимості кнопки "Show More"
+function updateShowMoreButton() {
+  // Якщо видимих книг стільки ж або більше, ніж усього, ховаємо кнопку
+  if (visibleBooksCount >= currentBooks.length) {
+    refs.showMoreBtn.classList.add('is-hidden');
+  } else {
+    // Інакше — показуємо
+    refs.showMoreBtn.classList.remove('is-hidden');
+  }
 }
 
 // ====== Функція відмалювання книг (без нових запитів) ======
 function renderVisibleBooks() {
-  const limit = getLimit();
-  const visibleBooks = currentBooks.slice(0, limit);
-  renderBookCardlist(visibleBooks);
+  // Беремо потрібну кількість книг з масиву
+  const booksToRender = currentBooks.slice(0, visibleBooksCount);
+  renderBookCardlist(booksToRender);
+
+  // НОВЕ: Оновлюємо стан кнопки після кожного рендеру
+  updateShowMoreButton();
+
+  // Ініціалізуємо модалку для нових карток
   initBookModal();
 }
 
@@ -44,10 +64,21 @@ async function loadBooksByCategory(category) {
 
     // Зберігаємо результат
     currentBooks = booksData;
+    //  Встановлюємо початкову кількість видимих книг
+    visibleBooksCount = getInitialLimit();
+    // Рендеримо першу порцію книг
     renderVisibleBooks();
   } catch (error) {
     console.error('loadBooksByCategory error:', error);
   }
+}
+
+//  Обробник для кнопки "Show More"
+function handleShowMore() {
+  // Збільшуємо лічильник видимих книг
+  visibleBooksCount += BOOKS_PER_PAGE;
+  // Перемальовуємо список з новою кількістю
+  renderVisibleBooks();
 }
 
 // ====== Ініціалізація категорій ======
@@ -92,6 +123,10 @@ async function initBooks() {
   await loadBooksByCategory('All categories');
 }
 
+// ====== Прив'язка слухачів ======
+
+// НОВЕ: Додаємо слухача на кнопку "Show More"
+refs.showMoreBtn.addEventListener('click', handleShowMore);
 // ====== При зміні ширини екрана — тільки перерендер локальних даних ======
 window.addEventListener('resize', () => {
   renderVisibleBooks(); // без запитів, тільки зміна кількості
