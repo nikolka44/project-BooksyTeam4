@@ -101,7 +101,6 @@
   align-items: center;
   justify-content: center;
   transition: background-color 0.2s, transform 0.2s;
-  border-radius: 4px;
 }
 .slider-btn svg {
   fill: #fff;
