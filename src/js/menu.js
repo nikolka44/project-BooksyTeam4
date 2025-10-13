@@ -19,5 +19,5 @@ document.querySelectorAll('.nav-link-mob').forEach(link =>
   })
 );
 
-console.log(document.querySelector('[data-menu-open]'));
-console.log(document.querySelector('[data-menu]'));
+// console.log(document.querySelector('[data-menu-open]'));
+// console.log(document.querySelector('[data-menu]'));

@@ -14,7 +14,7 @@ async function initCategories() {
     console.error(error);
   }
 }
-initCategories();
+// initCategories();
 
 async function initBooks() {
   try {
@@ -32,5 +32,5 @@ async function initBooks() {
     console.error('initBooks error:', error);
   }
 }
-initBooks();
+// initBooks();
 import './js/menu.js';
