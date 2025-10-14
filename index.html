@@ -18,7 +18,7 @@
     <script type="module" crossorigin src="/project-BooksyTeam4/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-BooksyTeam4/assets/vendor-Dal2vjfK.js">
     <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/vendor-DnGaGgwy.css">
-    <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/index-CFnITYHm.css">
+    <link rel="stylesheet" crossorigin href="/project-BooksyTeam4/assets/index-BbfDR9QE.css">
   </head>
   <body>
     <header class="header">
@@ -248,9 +248,8 @@
       <div class="books-title-wrapper">
         <h3 class="books-subtitle">Books</h3>
         <p class="books-counter">
-          Showing <span class="books-shown">0</span> of <span class="books-total"
-            >0</span
-          >
+          Showing <span class="books-shown">0</span> of
+          <span class="books-total">0</span>
         </p>
       </div>
 
@@ -268,18 +267,7 @@
       </div>
     </div>
     <div class="books-list-wrapper">
-      <ul class="books-cards-list">
-        <!-- Заготовка під картку -->
-        <!-- <li class="books-card">
-        <img class="books-card-image" src="" alt="" />
-        <div class="books-card-text-wrapper">
-          <h3 class="books-card-title">Book title</h3>
-          <p class="books-card-author">Book author</p>
-        </div>
-        <p class="books-card-price">$</p>
-        <button class="books-card-btn" type="button">Learn More</button>
-      </li> -->
-      </ul>
+      <ul class="books-cards-list"></ul>
       <button class="show-more-btn" type="button">Show More</button>
     </div>
   </div>
@@ -392,121 +380,153 @@
 </section>
 
       <section id="events" class="events">
-    <div class="container-events">
-        <div class="events-header">
-            <h4 class="events-subtitle">Events</h4>
-            <h2 class="events-title">Upcoming Events at Booksy</h2>
-            <p class="events-description">
-                Discover readings, workshops, and bookish gatherings — online and offline. Everyone's welcome.
-            </p>
-        </div>
-
-        <div class="events-slider">
-            <ul class="events-list">
-              <li class="event-item">
-                <img src="/project-BooksyTeam4/assets/event1_1-1x-DC7ev89I.webp" srcset="/project-BooksyTeam4/assets/event1_1-1x-DC7ev89I.webp 1x, /project-BooksyTeam4/assets/event1_1-2x-B3_aPXwL.webp 2x" alt="Book reading event" class="event-img" loading="lazy" />
-                <div class="event-content">
-                  <h3 class="event-name">Cozy Book Club — "The Midnight Library"</h3>
-                  <p class="event-date">In-store | June 5, 6:30 PM</p>
-                  <p class="event-description">
-                    Join us for an evening of tea, thoughtful conversation, and shared reflections as we dive
-                    into Matt Haig's bestseller.
-                  </p>
-                  <button class="event-btn" data-event='Cozy Book Club — "The Midnight Library"'>
-                    Register
-                    <svg width="20" height="20" class="btn-icon">
-                      <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-chevron-right"></use>
-                    </svg>
-                  </button>
-                </div>
-              </li>
-            
-              <li class="event-item">
-                <img src="/project-BooksyTeam4/assets/event1_2-1x-DCSyCOsq.webp" srcset="/project-BooksyTeam4/assets/event1_2-1x-DCSyCOsq.webp 1x, /project-BooksyTeam4/assets/event1_2-2x-B5P6H3g1.webp 2x" alt="Book fair event" class="event-img" loading="lazy" />
-                <div class="event-content">
-            
-                  <h3 class="event-name">Book Cover Design Workshop</h3>
-                  <p class="event-date">Online | June 12, 7:00 PM</p>
-                  <p class="event-description">
-                    A hands-on session for aspiring designers and curious readers. Learn what makes a cover
-                    stand out — from concept to print.
-                  </p>
-                  <button class="event-btn" data-event='Book Cover Design Workshop'>
-                    Register
-                    <svg width="20" height="20" class="btn-icon">
-                      <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-chevron-right"></use>
-                    </svg>
-                  </button>
-                </div>
-              </li>
-            
-              <li class="event-item">
-                <img src="/project-BooksyTeam4/assets/event1_3-1x-BZzDolAu.webp" srcset="/project-BooksyTeam4/assets/event1_3-1x-BZzDolAu.webp 1x, /project-BooksyTeam4/assets/event1_3-2x-BTrUeKy6.webp 2x" alt="Book signing event" class="event-img" loading="lazy" />
-                <div class="event-content">
-                  <h3 class="event-name">Writers Meetup</h3>
-                  <p class="event-date">November 15, 2025</p>
-                  <p class="event-description">
-                    Meet new authors, exchange experiences, and enjoy creative inspiration.
-                  </p>
-                  <button class="event-btn" data-event="Writers Meetup">
-                    Register
-                    <svg width="20" height="20" class="btn-icon">
-                      <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-chevron-right"></use>
-                    </svg>
-                  </button>
-                </div>
-              </li>
-            </ul>
-
-            <!-- Кнопки навігації -->
-            <button class="slider-btn prev" aria-label="Previous slide">
-                <svg width="24" height="24">
-                    <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-left-arrow"></use>
-                </svg>
-            </button>
-            <button class="slider-btn next" aria-label="Next slide">
-                <svg width="24" height="24">
-                    <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-right-arrow"></use>
-                </svg>
-            </button>
-
-            <!-- Пагінація -->
-            <div class="slider-pagination">
-                <span class="pagination-dot active"></span>
-                <span class="pagination-dot"></span>
-                <span class="pagination-dot"></span>
-            </div>
-        </div>
+  <div class="container container-events">
+    <div class="events-header">
+      <h4 class="events-subtitle">Events</h4>
+      <h2 class="events-title">Upcoming Events at Booksy</h2>
+      <p class="events-description">
+        Discover readings, workshops, and bookish gatherings — online and
+        offline. Everyone's welcome.
+      </p>
     </div>
+
+    <div class="events-slider">
+      <ul class="events-list">
+        <li class="event-item">
+          <img
+            src="/project-BooksyTeam4/assets/event1_1-1x-DC7ev89I.webp"
+            srcset="/project-BooksyTeam4/assets/event1_1-1x-DC7ev89I.webp 1x, /project-BooksyTeam4/assets/event1_1-2x-B3_aPXwL.webp 2x"
+            alt="Book reading event"
+            class="event-img"
+            loading="lazy"
+          />
+          <div class="event-content">
+            <h3 class="event-name">Cozy Book Club — "The Midnight Library"</h3>
+            <p class="event-date">In-store | June 5, 6:30 PM</p>
+            <p class="event-description">
+              Join us for an evening of tea, thoughtful conversation, and shared
+              reflections as we dive into Matt Haig's bestseller.
+            </p>
+            <button
+              class="event-btn"
+              data-event='Cozy Book Club — "The Midnight Library"'
+            >
+              Register
+              <svg width="20" height="20" class="btn-icon">
+                <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-chevron-right"></use>
+              </svg>
+            </button>
+          </div>
+        </li>
+
+        <li class="event-item">
+          <img
+            src="/project-BooksyTeam4/assets/event1_2-1x-DCSyCOsq.webp"
+            srcset="/project-BooksyTeam4/assets/event1_2-1x-DCSyCOsq.webp 1x, /project-BooksyTeam4/assets/event1_2-2x-B5P6H3g1.webp 2x"
+            alt="Book fair event"
+            class="event-img"
+            loading="lazy"
+          />
+          <div class="event-content">
+            <h3 class="event-name">Book Cover Design Workshop</h3>
+            <p class="event-date">Online | June 12, 7:00 PM</p>
+            <p class="event-description">
+              A hands-on session for aspiring designers and curious readers.
+              Learn what makes a cover stand out — from concept to print.
+            </p>
+            <button class="event-btn" data-event="Book Cover Design Workshop">
+              Register
+              <svg width="20" height="20" class="btn-icon">
+                <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-chevron-right"></use>
+              </svg>
+            </button>
+          </div>
+        </li>
+
+        <li class="event-item">
+          <img
+            src="/project-BooksyTeam4/assets/event1_3-1x-BZzDolAu.webp"
+            srcset="/project-BooksyTeam4/assets/event1_3-1x-BZzDolAu.webp 1x, /project-BooksyTeam4/assets/event1_3-2x-BTrUeKy6.webp 2x"
+            alt="Book signing event"
+            class="event-img"
+            loading="lazy"
+          />
+          <div class="event-content">
+            <h3 class="event-name">Writers Meetup</h3>
+            <p class="event-date">November 15, 2025</p>
+            <p class="event-description">
+              Meet new authors, exchange experiences, and enjoy creative
+              inspiration.
+            </p>
+            <button class="event-btn" data-event="Writers Meetup">
+              Register
+              <svg width="20" height="20" class="btn-icon">
+                <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-chevron-right"></use>
+              </svg>
+            </button>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Кнопки навігації -->
+      <button class="slider-btn prev" aria-label="Previous slide">
+        <svg width="24" height="24">
+          <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-left-arrow"></use>
+        </svg>
+      </button>
+      <button class="slider-btn next" aria-label="Next slide">
+        <svg width="24" height="24">
+          <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-right-arrow"></use>
+        </svg>
+      </button>
+
+      <!-- Пагінація -->
+      <div class="slider-pagination">
+        <span class="pagination-dot active"></span>
+        <span class="pagination-dot"></span>
+        <span class="pagination-dot"></span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Модальне вікно -->
 <div class="modal-backdrop is-hidden" id="eventModal">
-    <div class="modal">
-        <button class="modal-close" type="button" aria-label="Close modal">
-            <svg width="24" height="24">
-                <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-x"></use>
-            </svg>
-        </button>
-        <h2 class="modal-title">Register</h2>
-        <p class="modal-event-name" id="modalEventName"></p>
-        <form class="modal-form" id="eventForm">
-            <label class="modal-label">
-                Name*
-                <input type="text" name="name" required placeholder="Enter your name">
-            </label>
-            <label class="modal-label">
-                Email*
-                <input type="email" name="email" required placeholder="Enter your email">
-            </label>
-            <label class="modal-label">
-                Message
-                <textarea name="message" rows="4" placeholder="Your message (optional)"></textarea>
-            </label>
-            <button type="submit" class="modal-submit">Register</button>
-        </form>
-    </div>
+  <div class="modal">
+    <button class="modal-close" type="button" aria-label="Close modal">
+      <svg width="24" height="24">
+        <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-x"></use>
+      </svg>
+    </button>
+    <h2 class="modal-title">Register</h2>
+    <p class="modal-event-name" id="modalEventName"></p>
+    <form class="modal-form" id="eventForm">
+      <label class="modal-label">
+        Name*
+        <input type="text" name="name" required placeholder="Enter your name" />
+      </label>
+      <label class="modal-label">
+        Email*
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="Enter your email"
+        />
+      </label>
+      <label class="modal-label">
+        Message
+        <textarea
+          name="message"
+          rows="4"
+          placeholder="Your message (optional)"
+        ></textarea>
+      </label>
+      <button type="submit" class="modal-submit">Register</button>
+    </form>
+  </div>
 </div>
+
       <section id="article" class="article">
   <div class="container container-article">
     <div class="article-box">
