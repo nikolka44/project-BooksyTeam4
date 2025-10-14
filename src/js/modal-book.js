@@ -36,6 +36,7 @@ function openBookModal(book) {
   refs.bookModalClose.addEventListener('click', closeBookModal);
   refs.bookModalBackdrop.addEventListener('click', onBackdropClick);
   document.addEventListener('keydown', onEscClose);
+  refs.body.classList.add('noScroll');
 }
 
 function closeBookModal() {
@@ -45,6 +46,7 @@ function closeBookModal() {
   refs.bookModalClose.removeEventListener('click', closeBookModal);
   refs.bookModalBackdrop.removeEventListener('click', onBackdropClick);
   document.removeEventListener('keydown', onEscClose);
+  refs.body.classList.remove('noScroll');
 }
 
 function onBackdropClick(e) {
