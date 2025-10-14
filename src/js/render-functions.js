@@ -52,6 +52,22 @@ export function renderCategories(categories) {
   refs.categoriesList.innerHTML = markuoCategories;
 }
 
+//  Допоміжна функція для перетворення тексту у формат "Title Case"
+// Вона перетворює "SOME TITLE" -> "Some Title"
+function toTitleCase(str) {
+  // Якщо рядок порожній, повертаємо його без змін
+  if (!str) {
+    return '';
+  }
+  // Перетворюємо рядок в нижній регістр, розбиваємо на слова,
+  // робимо першу літеру кожного слова великою і з'єднуємо назад.
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
 // Рендер списку книг (отримуєш вже відфільтрований або обрізаний масив)
 export function renderBookCardlist(topbooks) {
   const markupBooks = topbooks
@@ -63,15 +79,26 @@ export function renderBookCardlist(topbooks) {
         title,
         author,
         price,
-      }) => `<li class="books-card" data-id="${_id}">
+      }) => {
+        // ЗМІНЕНО: Форматуємо назву перед вставкою в HTML
+        const formattedTitle = toTitleCase(title);
+        // Отримуємо тільки цілу частину ціни
+        const formattedPrice = parseInt(price);
+        return `<li class="books-card" data-id="${_id}">
         <img class="books-card-image" src="${book_image}" alt="${description}" />
-        <div class="books-card-text-wrapper">
-          <h3 class="books-card-title">${title}</h3>
-          <p class="books-card-author">${author}</p>
-        </div>
-        <p class="books-card-price">$${price}</p>
+         <div class="books-card-text-wrapper"> 
+            
+            <div class="books-card-info">
+              <h3 class="books-card-title">${formattedTitle}</h3> 
+              <p class="books-card-author">${author}</p>
+            </div>
+            
+            <p class="books-card-price">$${formattedPrice}</p> 
+          
+          </div> 
         <button class="books-card-btn" type="button">Learn More</button>
-      </li>`
+      </li>`;
+      }
     )
     .join('');
   refs.bookCardList.innerHTML = markupBooks;
