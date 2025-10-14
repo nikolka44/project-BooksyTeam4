@@ -28,7 +28,7 @@
 /* ----- Загальний контейнер модального вікна ----- */
 .book-modal {
   position: relative;
-  background-color: #fdfaf5;
+  background-color: #FCEEE6;
   border-radius: 18px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 24px;
@@ -80,7 +80,11 @@
   border-radius: 15px;
   margin: 0 auto 16px auto;
 }
+.book-modal-describe{
+  display: flex;
+  flex-direction: column;
 
+}
 .book-modal-title {
   font-size: 20px;
   font-weight: 700;
@@ -220,14 +224,27 @@
   color: rgba(17, 17, 17, 0.8);
   margin: 0;
 }
+.noScroll{
+  overflow: hidden;
+}
 
 /* ============================================== */
 /* ----- ПЛАНШЕТ (від 768px) ----- */
 /* ============================================== */
+@media (min-width: 768px) and (max-width: 1440px){
+    #books .book-modal {
+      padding: 64px 32px;
+    }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  #books .book-modal {
+    padding: 64px 16px;
+  }
+}
 @media screen and (min-width: 768px) {
   .book-modal {
-    max-width: 579px;
-    padding: 40px;
+    max-width: 704px;
+    padding: 64px 104px;
   }
 
   .modal-close-btn {
@@ -255,7 +272,6 @@
   .book-modal-title {
     grid-area: title;
     font-size: 24px;
-    align-self: end;
   }
 
   .book-modal-author {
@@ -296,7 +312,7 @@
 /* =============================================== */
 @media screen and (min-width: 1440px) {
   .book-modal {
-    max-width: 840px;
+    max-width: 1300px;
   }
 
   .book-modal-wrapper {

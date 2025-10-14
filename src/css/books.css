@@ -19,11 +19,6 @@
   padding-bottom: 32px;
 }
 
-/* Центруємо контент */
-.books-section .container {
-  max-width: 1440px;
-}
-
 /* Загальні обгортки */
 .books-categories-wrapper {
   margin-bottom: 24px;
@@ -158,16 +153,16 @@
 /* Картка */
 .books-card {
   background: var(--books-card-bg);
-  border-radius: var(--books-card-radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 .books-card-image {
   width: 100%;
-  height: 220px;
+  height: 322px;
   object-fit: cover;
   display: block;
+  border-radius: var(--books-card-radius);
 }
 .books-card-text-wrapper {
   padding: 16px 0;
@@ -200,7 +195,7 @@
 /* Кнопка */
 .books-card-btn {
   margin-bottom: 24px;
-  background-color: #fff;
+  background-color: transparent;
   border: 1px solid #0b0500;
   border-radius: 4px;
   padding: 8px 20px;
@@ -251,6 +246,7 @@
    Tablet (>=768px)
    ========================= */
 @media (min-width: 768px) {
+
   .books-categories-wrapper {
     margin-bottom: 32px;
     display: flex;
@@ -270,9 +266,6 @@
   .books-cards-list {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-  }
-  .books-card-image {
-    height: 300px;
   }
   /* Show More Button */
   .show-more-btn {
@@ -295,6 +288,7 @@
    ========================= */
 @media (min-width: 1440px) {
   /* layout: container → two columns: left narrow, right flexible */
+
   .books-section .container {
     display: flex;
     gap: 24px;
@@ -367,7 +361,10 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 40px 24px;
   }
-  .books-card-image {
-    height: 360px;
+}
+
+@media (min-width: 0px) and (max-width: 1440px) {
+  .books-card-image{
+    height: 483px;
   }
 }

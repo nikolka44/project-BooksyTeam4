@@ -9,4 +9,5 @@ export const refs = {
   bookModalClose: document.querySelector('#book-modal-close'),
   booksShown: document.querySelector('.books-shown'),
   booksTotal: document.querySelector('.books-total'),
+  body: document.querySelector('body'),
 };

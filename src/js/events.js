@@ -1,116 +1,162 @@
+console.log('Events.js loaded'); // ✅ Для перевірки
+
+// Чекаємо завантаження DOM
 document.addEventListener('DOMContentLoaded', () => {
-  const list = document.querySelector('.events-list');
-  if (!list) return;
+  console.log('DOMContentLoaded fired in events.js');
+  // ========== SLIDER LOGIC ==========
+  const slider = document.querySelector('.events-list');
+  const slides = document.querySelectorAll('.event-item');
+  const prevBtn = document.querySelector('.slider-btn.prev');
+  const nextBtn = document.querySelector('.slider-btn.next');
+  const paginationDots = document.querySelectorAll('.pagination-dot');
 
-  const cards = document.querySelectorAll('.item-card');
-  const container = document.querySelector('.events-container');
-
-  const controls = document.createElement('div');
-  controls.className = 'slider-controls';
-  controls.innerHTML = `
-    <div class="dots"></div>
-    <div class="arrows">
-      <button class="slider-btn prev" aria-label="Previous slide">
-        <svg>
-          <use href="/img/icons.svg#icon-left-arrow"></use>
-        </svg>
-      </button>
-      <button class="slider-btn next" aria-label="Next slide">
-        <svg>
-          <use href="/img/icons.svg#icon-right-arrow"></use>
-        </svg>
-      </button>
-    </div>
-  `;
-  container.appendChild(controls);
-
-  const dotsContainer = controls.querySelector('.dots');
-  const prevBtn = controls.querySelector('.prev');
-  const nextBtn = controls.querySelector('.next');
-
-  let current = 0;
-  let slidesToShow = 1;
-
-  function createDots() {
-    dotsContainer.innerHTML = '';
-    const totalDots =
-      slidesToShow === 1 ? cards.length : cards.length - slidesToShow + 1;
-    for (let i = 0; i < totalDots; i++) {
-      const dot = document.createElement('span');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dotsContainer.appendChild(dot);
-    }
+  if (!slider || !slides.length) {
+    console.error('Slider elements not found');
+    return;
   }
 
-  function fadeOutIn(callback) {
-    list.style.transition = 'opacity 0.3s ease';
-    list.style.opacity = '0';
-    setTimeout(() => {
-      callback();
-      list.style.opacity = '1';
-    }, 300);
+  let currentIndex = 0;
+
+  function getVisibleCount() {
+    if (window.innerWidth >= 1440) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
   }
 
   function updateSlider() {
-    const total = cards.length;
-    cards.forEach((card, i) => {
-      card.style.display =
-        i >= current && i < current + slidesToShow ? 'flex' : 'none';
+    const visible = getVisibleCount();
+    
+        // Для мобільної та планшета
+    const slideWidth = slides[0].offsetWidth;
+    const gap = window.innerWidth >= 768 ? 24 : 24;
+    const offset = currentIndex * (slideWidth + gap);
+    
+    slider.style.transform = `translateX(-${offset}px)`;
+    
+    // Оновлення кнопок
+    const maxIndex = Math.max(0, slides.length - visible);
+    if (prevBtn) prevBtn.disabled = currentIndex === 0;
+    if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+    
+    // Оновлення пагінації
+    paginationDots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
     });
-
-    const dots = dotsContainer.querySelectorAll('.dot');
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
-
-    prevBtn.classList.toggle('is-disabled', current === 0);
-    nextBtn.classList.toggle('is-disabled', current >= total - slidesToShow);
   }
 
-  function checkViewport() {
-    const width = window.innerWidth;
-
-    if (width >= 1440) {
-      slidesToShow = cards.length;
-      cards.forEach(card => (card.style.display = 'flex'));
-      controls.style.display = 'none';
-      list.style.transition = '';
-      list.style.opacity = '1';
-    } else {
-      slidesToShow = width < 768 ? 1 : 2;
-      controls.style.display = 'flex';
-      current = 0;
-      createDots();
-      updateSlider();
-    }
+  // Кнопки навігації
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const visible = getVisibleCount();
+      const maxIndex = Math.max(0, slides.length - visible);
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
   }
 
-  nextBtn.addEventListener('click', () => {
-    const total = cards.length;
-    if (current < total - slidesToShow) {
-      fadeOutIn(() => {
-        current++;
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
         updateSlider();
-      });
-    }
-  });
+      }
+    });
+  }
 
-  prevBtn.addEventListener('click', () => {
-    if (current > 0) {
-      fadeOutIn(() => {
-        current--;
-        updateSlider();
-      });
-    }
-  });
-
-  dotsContainer.addEventListener('click', e => {
-    if (!e.target.classList.contains('dot')) return;
-    const index = Array.from(dotsContainer.children).indexOf(e.target);
-    fadeOutIn(() => {
-      current = index;
+  // Пагінація - клік по точках
+  paginationDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      const visible = getVisibleCount();
+      const maxIndex = Math.max(0, slides.length - visible);
+      currentIndex = Math.min(index, maxIndex);
       updateSlider();
     });
   });
 
-  window.addEventListener('resize', checkViewport);
-  checkViewport();
+  // Оновлення при зміні розміру екрана
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const visible = getVisibleCount();
+      const maxIndex = Math.max(0, slides.length - visible);
+      if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+      }
+      updateSlider();
+    }, 100);
+  });
+
+  // Ініціалізація
+  updateSlider();
+
+  // ========== MODAL LOGIC ==========
+  const modal = document.getElementById('eventModal');
+  const modalEventName = document.getElementById('modalEventName');
+  const modalClose = document.querySelector('.modal-close');
+  const eventForm = document.getElementById('eventForm');
+  const eventButtons = document.querySelectorAll('.event-btn');
+
+  if (!modal || !modalEventName || !modalClose || !eventForm) {
+    console.error('Modal elements not found');
+    return;
+  }
+
+  console.log('Found event buttons:', eventButtons.length);
+
+  // Відкриття модального вікна
+  eventButtons.forEach((btn, index) => {
+    console.log(`Setting up button ${index}`, btn);
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const eventName = btn.getAttribute('data-event');
+      console.log('Button clicked, event:', eventName);
+      modalEventName.textContent = eventName;
+      modal.classList.remove('is-hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Закриття модального вікна
+  function closeModal() {
+    modal.classList.add('is-hidden');
+    document.body.style.overflow = '';
+    eventForm.reset();
+  }
+
+  modalClose.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeModal();
+  });
+
+  // Закриття по кліку на backdrop
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Закриття по Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('is-hidden')) {
+      closeModal();
+    }
+  });
+
+  // Відправка форми
+  eventForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(eventForm);
+    const data = Object.fromEntries(formData);
+    
+    console.log('Form submitted:', data);
+    
+    // Показати повідомлення
+    alert(`Thank you for registering for "${modalEventName.textContent}"! We'll contact you soon.`);
+    
+    closeModal();
+  });
 });
