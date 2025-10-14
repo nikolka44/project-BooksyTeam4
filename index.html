@@ -90,108 +90,156 @@
     <main>
       <!-- Loads the specified .html file -->
       <section id="hero" class="hero">
-    <div class="hero__container">
-        <div class="hero__slider swiper">
-            <ul class="hero__list swiper-wrapper">
-                <!-- Slide 1 -->
-                <li class="hero__item swiper-slide">
-                    <picture>
-                        <!-- mobile -->
-                        <source srcset="/project-BooksyTeam4/assets/1-mob-ban-1x-Cat-ysJX.webp 1x, /project-BooksyTeam4/assets/1-mob-ban-2x-B1nHHlce.webp 2x"
-                            media="(min-width: 320px)" />
-                        <!-- tablet -->
-                        <source srcset="/project-BooksyTeam4/assets/1-tub-ban-1x-BMY6qMif.webp 1x, /project-BooksyTeam4/assets/1-tub-ban-2x-DWpBSKVT.webp 2x"
-                            media="(min-width: 768px)" />
-                        <!-- desktop -->
-                        <source srcset="/project-BooksyTeam4/assets/1-des-ban-1x-fpmzguDg.webp 1x, /project-BooksyTeam4/assets/1-des-ban-2x-BiJOGPoS.webp 2x"
-                            media="(min-width: 1440px)" />
-                        <img src="/project-BooksyTeam4/assets/1-des-ban-1x-min-BkBoU-rx.jpg" alt="Reading with coffee" class="hero__image" />
-                    </picture>
+  <div class="hero__container">
+    <div class="hero__slider swiper">
+      <ul class="hero__list swiper-wrapper">
+        <!-- Slide 1 -->
+        <li class="hero__item swiper-slide">
+          <picture>
+            <!-- mobile -->
+            <source
+              srcset="/project-BooksyTeam4/assets/1-mob-ban-1x-Cat-ysJX.webp 1x, /project-BooksyTeam4/assets/1-mob-ban-2x-B1nHHlce.webp 2x"
+              media="(min-width: 320px)"
+            />
+            <!-- tablet -->
+            <source
+              srcset="/project-BooksyTeam4/assets/1-tub-ban-1x-BMY6qMif.webp 1x, /project-BooksyTeam4/assets/1-tub-ban-2x-DWpBSKVT.webp 2x"
+              media="(min-width: 768px)"
+            />
+            <!-- desktop -->
+            <source
+              srcset="/project-BooksyTeam4/assets/1-des-ban-1x-fpmzguDg.webp 1x, /project-BooksyTeam4/assets/1-des-ban-2x-BiJOGPoS.webp 2x"
+              media="(min-width: 1440px)"
+            />
+            <img
+              src="/project-BooksyTeam4/assets/1-des-ban-1x-min-BkBoU-rx.jpg"
+              alt="Reading with coffee"
+              class="hero__image"
+            />
+          </picture>
 
-                    <div class="hero__overlay">
-                        <p class="hero__discount">Get 10% off your <br>first order</p>
-                        <a href="#books" class="hero__btn">Shop Now!</a>
-                    </div>
-                </li>
+          <div class="hero__overlay">
+            <p class="hero__discount">Get 10% off your <br />first order</p>
+            <a href="#books" class="hero__btn">Shop Now!</a>
+          </div>
+        </li>
 
-                <!-- Slide 2 -->
-                <li class="hero__item swiper-slide">
-                    <picture>
-                        <source srcset="data:image/webp;base64,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 1x, /project-BooksyTeam4/assets/2-mob-ban-2x-BntIcKA-.webp 2x"
-                            media="(min-width: 320px)" />
-                        <source srcset="/project-BooksyTeam4/assets/2-tub-ban-1x-DKaX-fcy.webp 1x, /project-BooksyTeam4/assets/2-tub-ban-2x-CnWNmGbZ.webp 2x"
-                            media="(min-width: 768px)" />
-                        <source srcset="/project-BooksyTeam4/assets/2-des-ban-1x-C9yu5z73.webp 1x, /project-BooksyTeam4/assets/2-des-ban-2x-B0kR5nYy.webp 2x"
-                            media="(min-width: 1440px)" />
-                        <img src="/project-BooksyTeam4/assets/2-des-ban-1x-min-Bt7boo7G.jpg" alt="Books and candle" class="hero__image" />
-                    </picture>
+        <!-- Slide 2 -->
+        <li class="hero__item swiper-slide">
+          <picture>
+            <source
+              srcset="data:image/webp;base64,UklGRioMAABXRUJQVlA4WAoAAAAgAAAAVgEAxgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggPAoAABA+AJ0BKlcBxwA+bTaYSSQjIq6hdAkh0A2JaW70kpLA1RLL+267/30XZ+/S+wewh/Vbnz+28A5kTsXdj9PGbj940beWied/1fLr9XcEb9lvZa/bEQOxbiART+Q7z7RBOlX+PqDZwKb4ZywE00XQLnTgSrZoMPWPvxzVrbyYpgzSh1+Gj+56MI9MA8JzpmLL/NCi3lQ1krQOqrfpcjrXfFhSZe+tLNwXrDrUnQd5V4MmHG1suRxIVFZp1vxDUBL+ZpyaRSEupyelFHFRy6c7GFQEKtBoEJnySU1Cs7ioledXhbpunu9c/TLT047h9nl+ZOsz/dC3BbVYJATnX/cviMaPGA2klpV6AzSq17eVrLzGdxpupQ3/ywsUz85U3Okq43VhDM+WXuiqyuppT1N6gL9jq5SvGocZlnwjHczHqJJ9HjMPq/6xgrUW7CHnk2hQh4FK9HwRrMnkBGYwcjkMKBF/YuTi9Acjqa6gV3mkm9iAufClm9XFAnql0B+AsYmhLFRf8zgYOe1lQWlnMojAORZVec2kwMtznz51n1UWzU8vd03GRlXN8TowMaMlOwF3o/C9tqX0SpAVf7rbm2tFPipnT6hMWYmBW634gEQV1mPRwxwKCEe3QOyTGIHVQL/M3uq/eCJb0EEpCbs5CwJQ9m7X5W8/fkO9VuAA/u828ej0l0uQ3bJ3pa5r/0UaABgq56FXJcFpzxZ9dmV8yCTFIKuW5h4Dr0CAjhevInF1MvJMhh6cL/35l32HgG8HbiXDFFBPZGDIRzSaZU1zcFou0swJYzXvfJstY4eAAjAXUzRYH+WGn33wM51JT9hNeZb/TYu+pi0s6kQ6xzg80BBfAAZIG0dgb4AH+yLtz7nt5YWyI2DvVONOv0Q7n1D2uKF5LoQpnuEkNK6I28rlzrvzHbgbynFTtVfUgbUJ7E2v6qpTZFfWudDWLQgMw9+6RHvIs11c9U+xjfgmTTh/C1L3AXzNSPoKTrFlsnSeHcGwrtcur/KTj8VsVCshmoQeh2sHJQt0mJdYwiIUmS5wVLJ5CRwAZJa3NMj1IDUSh/P4emWdH9CyIoyfBMMDf9cEws8iALn2KYTiDyV8dbhl9coLXgnm66KhyFwM9MTZMZSjzDiNL3PRsCX5BCAhjtFFUMCPGR7VmcpCBjluFi9kumdzw6xgwAz6zq8MQklTL3QyjJpxh7gkvzlB3sR+s5EikS5fDyLO1jIre69cZgJN0OE6SoELsBcGtuk2Ua3SD7PVabmtHHGJVqxOb+hSxtNSNCKCAnWuBk7JCJG/lgJj7rWhXVfailUq6JYab4ya5f7/9jCV5dQqIMqRaNifD9VoB2MQPOjqVLefTxlDAKPOoRlcHC+KMAKD2tClIxxJ8nEXtGCAF7/GD45ulNDnMCAnMt4vcrjel0o8PPem3pZIstL2oI74nnaMW6TwR+7E0VkqT5grMjrp82xnRrNbbjnWj5TdWZaGgENwZqq+8ujvYZ51FNezaXvbY5AJG7Xemy49Eufi/BHtg4+mAR70TNtEVWzMnzmeFksA0/rkd6WyUAog9NOQzc0KJ4WcjG4Xar5HzrRwHopEKFq3uU92lG53o1ul3ivgneKn17u+pwsMIQhoAIqsLn64GsPDAHlNiz9RRpuoaHKp/6p8owlhB7yhaQJwJjbncKu590l4b5nIN9v4WkHdEXiBTddt1Px99VfX+HELlVLeB5j7E6g2+AlBRks2My2W078nx3Joez4TrqdF39Bz0entR1mHlHJT5r7ICtJ5V93B0hZxZlmM5OZVgUDaJIZAIkCdoInVPcnYnFBWV6vPkI8g2RNNqxUdKUZ1UI7XFSsbMWFcgJJRSquGUOD+gu4UjXZphvaScJclM1I2Jfxy47FPypxYh74ws1CBrZeREg648jujojxvqsQPKd7sBhYAWANVxSDe8cW0Z+IHh3825iObWZSqs2FQJDN4En8EDNlHZ1qZyJQM4pFXW564vIrpyo+kAZL1rd6yGW19eZedYvy417GDNbDGdbN3B7KnCmjktsMHiVucfANDcybn7VBauSngLrOfBQdZlHVWIg4pZyxKQ7CpVz7DNnYM3n6dqxlU0hqsoh5CFy8u8N4EHNlonp9DL+Ph5jxHX5gMQpjOfSJ3rJgYpvQFadSFnIn4sJR3nI+jgHtFPex1CnwJT+7rFbkWT1ue57yTP1sN6rrVQm3qFMMFl8Uy9xJEEYWqcQlW4/NDaXw9hHACy9BHqElBaGSnyHkmldcDVyjFq79lvy0HOClws3KHWNwJaU1BJ5sHYH5ek/gNqP5y1YUOCPEHK2hB+yW7sMR4ylc3cgwObP7Cx8wa12KhtdEI1Ki+gm/O/eKua7zdA2BN00u3FlwbT+GaAidWo60o+mOV5w740U4Ztxb9Yx4hcGV5Q00LumjqIAwVhw2bkv+qI64DGxyMSXi68hHYHucwEBp/W2lJsoYuYRX5dlaIr/sjnya+XTUA63ZEO0MDCqwdx5maKdrIdecFSm2FKxLsTILtPF0yD9V3/N6a5E+RbieGM/2ZpGaAaweQjKgbrzRLanm3OTHRqtzz/9PNQ13fni9cel6HZDp2Iw5Xl7q9y4hdKRzvaWTQTJptuOn+Z8VCCICP7SdnzZIe74GxxZvOtUrSRqKmysLNz6e7gSsBdyEU2PgASplVZc8RFDDv39VeGAZms4cH5WWbB2iyWbjplcxkkCfGTn1qJ57jFgnqurvvKJBoDPqtqbLzNOOjnH7+uBk+tWv9dtBstfIDlfWjEHy4WbdZ88Q8hJU8J8Chk6vEcRm+z3A1Nw51zbeXnHRp7STVTmGBSZWzha5YYEF7DyU+rxOrnoccRHS+eb/+JcWQhL9LMdXast5BAEHm0cqoe/QgrHXX+bXxfjQ/VQFIGQX2J16T+ZhIl6G95BX5D0iMWpNUaeidRcX4NwVjOqvT9s7mKGtvSo+QRdFMV5iXmYxWGB4xaIOkt6BCxSTjvpQ7aVVce9L6ptsWahjhL0cG/Jzlfl4ye1khI8v4+jxyRwKfPzcBrNl+3kemsCET19qc5XG9hWGjOPhXA5x8L8VcKiePhcD7QGtH3Q7MlyYaKXwhXuVdB2lObXVaPxxhitJQvw+RqzdCY+oO4AF6Z25SuAqdXw3ZPrxOPxfIugeLV6WctIW4WEuAABu4k9o2wH559wq7MJLtyQyunBQkMDWyoFeUPsANfKnlzV5Wrd++HD9iH0nDdhmmKTB06cFFSTZyfRYwA1Jc4tEmHLzqxuqRDeB6TSsIddBK4e7/1sP7+4bS+tLoGTq4Z+lTcFnfMeNfOcVwmWWa4Xjp4cmcykvoEgZZecO8t7BpLBfs3R4YmorHrnS8p+sFHh+3XNJ3mVJOx+LLDUGQTpQ14YKOiqGNUpbS1Raazba0DshNNfYKt1s80Jk94yMtN/AP3Ex5nWM1MFRAUKxhGjsEIGnJmFtPHI/gG0BNIxvQpf/OExpYn03tQxdy8yAlhw4e0GtgAAA= 1x, /project-BooksyTeam4/assets/2-mob-ban-2x-BntIcKA-.webp 2x"
+              media="(min-width: 320px)"
+            />
+            <source
+              srcset="/project-BooksyTeam4/assets/2-tub-ban-1x-DKaX-fcy.webp 1x, /project-BooksyTeam4/assets/2-tub-ban-2x-CnWNmGbZ.webp 2x"
+              media="(min-width: 768px)"
+            />
+            <source
+              srcset="/project-BooksyTeam4/assets/2-des-ban-1x-C9yu5z73.webp 1x, /project-BooksyTeam4/assets/2-des-ban-2x-B0kR5nYy.webp 2x"
+              media="(min-width: 1440px)"
+            />
+            <img
+              src="/project-BooksyTeam4/assets/2-des-ban-1x-min-Bt7boo7G.jpg"
+              alt="Books and candle"
+              class="hero__image"
+            />
+          </picture>
 
-                    <div class="hero__overlay">
-                        <p class="hero__discount">Save 15% on <br>some books</p>
-                        <a href="#books" class="hero__btn">Shop Now!</a>
-                    </div>
-                </li>
+          <div class="hero__overlay">
+            <p class="hero__discount">Save 15% on <br />some books</p>
+            <a href="#books" class="hero__btn">Shop Now!</a>
+          </div>
+        </li>
 
-                <!-- Slide 3 -->
-                <li class="hero__item swiper-slide">
-                    <picture>
-                        <source srcset="/project-BooksyTeam4/assets/3-mob-ban-1x-D2f208MK.webp 1x, /project-BooksyTeam4/assets/3-mob-ban-2x-DJ6NlVau.webp 2x"
-                            media="(min-width: 320px)" />
-                        <source srcset="/project-BooksyTeam4/assets/3-tub-ban-1x-CMXdUHqi.webp 1x, /project-BooksyTeam4/assets/3-tub-ban-2x-COycbGC4.webp 2x"
-                            media="(min-width: 768px)" />
-                        <source srcset="/project-BooksyTeam4/assets/3-des-ban-1x-Beihbl1s.webp 1x, /project-BooksyTeam4/assets/3-des-ban-2x-X7vTK3kg.webp 2x"
-                            media="(min-width: 1440px)" />
-                        <img src="/project-BooksyTeam4/assets/3-des-ban-1x-min-B9L90UWA.jpg" alt="Sunlight and open book" class="hero__image" />
-                    </picture>
+        <!-- Slide 3 -->
+        <li class="hero__item swiper-slide">
+          <picture>
+            <source
+              srcset="/project-BooksyTeam4/assets/3-mob-ban-1x-D2f208MK.webp 1x, /project-BooksyTeam4/assets/3-mob-ban-2x-DJ6NlVau.webp 2x"
+              media="(min-width: 320px)"
+            />
+            <source
+              srcset="/project-BooksyTeam4/assets/3-tub-ban-1x-CMXdUHqi.webp 1x, /project-BooksyTeam4/assets/3-tub-ban-2x-COycbGC4.webp 2x"
+              media="(min-width: 768px)"
+            />
+            <source
+              srcset="/project-BooksyTeam4/assets/3-des-ban-1x-Beihbl1s.webp 1x, /project-BooksyTeam4/assets/3-des-ban-2x-X7vTK3kg.webp 2x"
+              media="(min-width: 1440px)"
+            />
+            <img
+              src="/project-BooksyTeam4/assets/3-des-ban-1x-min-B9L90UWA.jpg"
+              alt="Sunlight and open book"
+              class="hero__image"
+            />
+          </picture>
 
-                    <div class="hero__overlay">
-                        <p class="hero__discount">Summer Sale!<br>
-                            Up to -40% discounts</p>
-                        <a href="#books" class="hero__btn">Shop Now!</a>
-                    </div>
-                </li>
+          <div class="hero__overlay">
+            <p class="hero__discount">
+              Summer Sale!<br />
+              Up to -40% discounts
+            </p>
+            <a href="#books" class="hero__btn">Shop Now!</a>
+          </div>
+        </li>
 
-                <!-- Slide 4 -->
-                <li class="hero__item swiper-slide">
-                    <picture>
-                        <source srcset="/project-BooksyTeam4/assets/4-mob-ban-1x-w0dwiu50.webp 1x, /project-BooksyTeam4/assets/4-mob-ban-2x-C9xAQzik.webp 2x"
-                            media="(min-width: 320px)" />
-                        <source srcset="/project-BooksyTeam4/assets/4-tub-ban-1x-BZR4bl7p.webp 1x, /project-BooksyTeam4/assets/4-tub-ban-2x-SEXWoUFz.webp 2x"
-                            media="(min-width: 768px)" />
-                        <source srcset="/project-BooksyTeam4/assets/4-des-ban-1x-fFlcJVdv.webp 1x, /project-BooksyTeam4/assets/4-des-ban-2x-BdeIeBt8.webp 2x"
-                            media="(min-width: 1440px)" />
-                        <img src="/project-BooksyTeam4/assets/4-des-ban-1x-min-DA31qmPS.jpg" alt="Stack of books" class="hero__image" />
-                    </picture>
+        <!-- Slide 4 -->
+        <li class="hero__item swiper-slide">
+          <picture>
+            <source
+              srcset="/project-BooksyTeam4/assets/4-mob-ban-1x-w0dwiu50.webp 1x, /project-BooksyTeam4/assets/4-mob-ban-2x-C9xAQzik.webp 2x"
+              media="(min-width: 320px)"
+            />
+            <source
+              srcset="/project-BooksyTeam4/assets/4-tub-ban-1x-BZR4bl7p.webp 1x, /project-BooksyTeam4/assets/4-tub-ban-2x-SEXWoUFz.webp 2x"
+              media="(min-width: 768px)"
+            />
+            <source
+              srcset="/project-BooksyTeam4/assets/4-des-ban-1x-fFlcJVdv.webp 1x, /project-BooksyTeam4/assets/4-des-ban-2x-BdeIeBt8.webp 2x"
+              media="(min-width: 1440px)"
+            />
+            <img
+              src="/project-BooksyTeam4/assets/4-des-ban-1x-min-DA31qmPS.jpg"
+              alt="Stack of books"
+              class="hero__image"
+            />
+          </picture>
 
-                    <div class="hero__overlay">
-                        <p class="hero__discount">Last chance to buy our <br>spring bestsellers</p>
-                        <a href="#books" class="hero__btn">Shop Now!</a>
-                    </div>
-                </li>
-            </ul>
+          <div class="hero__overlay">
+            <p class="hero__discount">
+              Last chance to buy our <br />spring bestsellers
+            </p>
+            <a href="#books" class="hero__btn">Shop Now!</a>
+          </div>
+        </li>
+      </ul>
 
-            <!-- Кнопки -->
-            <div class="hero__bottom">
-                <h1 class="hero__title">Discover Your Next Great Read Today!</h1>
-                <div class="hero__buttons">
-                    <button class="hero__button hero__button--prev" aria-label="Previous slide">
-                        <svg class="hero__icon" aria-hidden="true" width="24" height="24">
-                            <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-left-arrow"></use>
-                        </svg>
-                    </button>
-                    <button class="hero__button hero__button--next" aria-label="Next slide">
-                        <svg class="hero__icon" width="24" height="24">
-                            <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-right-arrow"></use>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+      <!-- Кнопки -->
+      <div class="hero__bottom">
+        <h1 class="hero__title">Discover Your Next Great Read Today!</h1>
+        <div class="hero__buttons">
+          <button
+            class="hero__button hero__button--prev"
+            aria-label="Previous slide"
+          >
+            <svg class="hero__icon" aria-hidden="true" width="24" height="24">
+              <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-left-arrow"></use>
+            </svg>
+          </button>
+          <button
+            class="hero__button hero__button--next"
+            aria-label="Next slide"
+          >
+            <svg class="hero__icon" width="24" height="24">
+              <use href="/project-BooksyTeam4/assets/icons-Czhemri8.svg#icon-right-arrow"></use>
+            </svg>
+          </button>
         </div>
+      </div>
     </div>
+  </div>
 </section>
-</body>
 
-</html>
       <section id="books" class="books-section">
   <div class="container">
     <h2 class="visually-hidden">Trending books</h2>
