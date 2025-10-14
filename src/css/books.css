@@ -5,7 +5,7 @@
 /* змінні для швидкого налаштування */
 :root {
   --books-gap: 16px;
-  --books-card-radius: 10px;
+  --books-card-radius: 8px;
   --books-bg: #fceee6;
   --books-card-bg: #fceee6;
   --books-font: 'Rubik', sans-serif;
@@ -14,17 +14,14 @@
 
 /* Контейнер секції */
 .books-section {
-  background: var(--books-bg);
-  padding: 32px;
   font-family: var(--books-font);
-  box-sizing: border-box;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 /* Центруємо контент */
 .books-section .container {
   max-width: 1440px;
-  margin: 0 auto;
-  box-sizing: border-box;
 }
 
 /* Загальні обгортки */
@@ -37,10 +34,11 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
+  align-items: baseline;
 }
 .books-subtitle {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   line-height: 1.5;
   margin: 0;
 }
@@ -59,8 +57,7 @@
 /* Dropdown (mobile/tablet) */
 .dropdown {
   position: relative;
-  width: 100%;
-  max-width: 342px;
+  /* width: 100%; */
   font-family: var(--books-font);
   background: rgba(11, 5, 0, 0.05);
   border: 1px solid rgba(11, 5, 0, 0.15);
@@ -68,12 +65,13 @@
 }
 
 .dropdown-toggle {
+  height: 41px;
   width: 100%;
   background: rgba(11, 5, 0, 0.05);
   border: 1px solid rgba(11, 5, 0, 0.15);
   border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 14px;
+  padding: 8px 12px;
+  font-size: 18px;
   font-weight: 400;
   text-align: left;
   cursor: pointer;
@@ -87,9 +85,9 @@
   content: '';
   position: absolute;
   top: 50%;
-  right: 14px;
-  width: 12px;
-  height: 12px;
+  right: 9px;
+  width: 24px;
+  height: 24px;
   transform: translateY(-50%) rotate(0deg);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='none' stroke='%23333' stroke-width='2' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 8 10 12 14 8'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -143,9 +141,9 @@
 }
 
 /* ========== Books list (cards) ========== */
-.books-list-wrapper {
+/* .books-list-wrapper {
   margin-top: 6px;
-}
+} */
 
 /* Сітка — mobile default: 2 колонки */
 .books-cards-list {
@@ -172,21 +170,31 @@
   display: block;
 }
 .books-card-text-wrapper {
-  padding: 10px 12px;
+  padding: 16px 0;
+  margin-top: auto; /* Притискає текст до низу, якщо картинки різної висоти */
+  display: flex;
+  align-items: first baseline;
+  justify-content: space-between;
 }
 .books-card-title {
   font-size: 16px;
-  margin: 6px 0 4px;
+  /* margin: 6px 0 4px; */
   font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap; /* Забороняємо перенос на новий рядок */
+  overflow: hidden; /* Ховаємо все, що не вміщується */
+  text-overflow: ellipsis; /* Додаємо три крапки в кінці */
 }
 .books-card-author {
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.5;
   color: #666;
-  margin: 0 0 8px;
+  /* margin: 0 0 8px; */
 }
 .books-card-price {
-  padding: 0 12px 12px;
+  /* padding: 0 12px 12px; */
   font-weight: 600;
+  font-size: 20px;
 }
 
 /* Кнопка */
@@ -204,8 +212,9 @@
 }
 .books-card-btn:hover {
   opacity: 0.95;
-  background-color: #fff;
+  color: #fff;
   background-color: var(--books-accent);
+  border: 1px solid var(--books-accent);
 }
 /* Show More Button */
 .show-more-btn {
@@ -225,9 +234,14 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 .show-more-btn:hover {
-  background-color: #e15d05;
-  color: #fff;
+  background-color: #ea8d50;
+  color: #0b0500;
   opacity: 0.95;
+  border: 1px solid #0b0500;
+  transform: scale(1.05);
+}
+.showmore-btn:active {
+  transform: scale(0.98);
 }
 .show-more-btn.is-hidden {
   display: none;
@@ -237,6 +251,21 @@
    Tablet (>=768px)
    ========================= */
 @media (min-width: 768px) {
+  .books-categories-wrapper {
+    margin-bottom: 32px;
+    display: flex;
+    align-items: baseline;
+  }
+  .books-title-wrapper {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-right: 24px;
+    margin-bottom: 0;
+  }
+  .dropdown {
+    flex: 0 0 249px;
+    width: 249px;
+  }
   /* сітка: tablet — 2 колонки (великие картинки) */
   .books-cards-list {
     grid-template-columns: repeat(2, 1fr);
@@ -252,7 +281,7 @@
     align-items: center;
     justify-content: center;
   }
-  /* сховаємо десктопний список у середньому breakpoint — хочеш щоб dropdown показувався на планшеті, так як ти просила */
+  /* сховаємо десктопний список у середньому breakpoint — хочеш щоб dropdown показувався на планшеті */
   .categories-list {
     display: none;
   }
@@ -269,13 +298,15 @@
   .books-section .container {
     display: flex;
     gap: 24px;
-    align-items: flex-start;
   }
 
   .books-categories-wrapper {
     flex: 0 0 308px;
     width: 308px;
+    margin-bottom: 0;
+    display: block;
   }
+
   .books-list-wrapper {
     flex: 1 1 auto;
     min-width: 0;
@@ -286,29 +317,40 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
-  }
-  .books-counter {
-    margin-left: 12px;
+    margin-bottom: 24px;
+    margin-right: 0;
+    padding-right: 0;
   }
 
+  .categories-container {
+    width: 308px;
+  }
+  /* зробити список категорій "sticky" при скролі */
+  .books-categories {
+    position: relative;
+  }
+  .categories-list {
+    position: sticky;
+    top: 24px;
+  }
   /* показуємо десктопний список категорій, ховаємо dropdown */
   .categories-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
     list-style: none;
     margin: 0;
     padding: 0;
   }
+
   .dropdown {
     display: none;
   }
 
   .categories-item {
     cursor: pointer;
-    padding: 6px 4px;
-    font-size: 16px;
+    padding: 8px 0;
+    font-size: 18px;
+    line-height: 1.5;
     color: #111;
     border-radius: 6px;
   }
@@ -320,21 +362,12 @@
     color: #000;
   }
 
-  /* Сітка: desktop — 3 колонки (зручно для 24 карток) */
+  /* Сітка: desktop — 4 колонки (зручно для 24 карток) */
   .books-cards-list {
     grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
+    gap: 40px 24px;
   }
   .books-card-image {
     height: 360px;
-  }
-
-  /* зробити список категорій "sticky" при скролі */
-  .books-categories {
-    position: relative;
-  }
-  .categories-list {
-    position: sticky;
-    top: 24px;
   }
 }
