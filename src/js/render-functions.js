@@ -123,8 +123,10 @@ export function renderBookModal(book) {
             <span class="qty-value">1</span>
             <button class="qty-btn" data-action="increase">+</button>
           </div>
-          <button class="add-to-cart-btn">Add To Cart</button>
-          <button class="buy-now-btn">Buy Now</button>
+          <div class="book-modal-btn">
+            <button class="add-to-cart-btn">Add To Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+          </div>
         </div>
 
         <div class="book-modal-details">

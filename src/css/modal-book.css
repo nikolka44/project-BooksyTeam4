@@ -28,8 +28,8 @@
 /* ----- Загальний контейнер модального вікна ----- */
 .book-modal {
   position: relative;
-  background-color: #FCEEE6;
-  border-radius: 18px;
+  background-color: #fceee6;
+  border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 24px;
   width: calc(100% - 40px);
@@ -38,7 +38,6 @@
   overflow-y: auto;
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
-  font-family: 'DM Sans', sans-serif; /* Рекомендація: використати шрифт з макету */
 }
 
 .backdrop.is-hidden .book-modal {
@@ -75,92 +74,104 @@
 }
 
 .book-modal-image {
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
-  margin: 0 auto 16px auto;
+  width: 309px;
+  height: 467px;
+  border-radius: 8px;
+  margin: 0 auto 24px auto;
 }
-.book-modal-describe{
+.book-modal-describe {
   display: flex;
   flex-direction: column;
-
 }
 .book-modal-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #111;
-  margin: 0 0 4px 0;
+  font-weight: 600;
+  font-size: 40px;
+  color: #0b0500;
+  margin: 0 0 8px 0;
 }
 
 .book-modal-author {
+  font-weight: 400;
   font-size: 14px;
-  font-style: italic;
-  color: #757575;
+  line-height: 1.5;
+  color: #0b0500;
   margin: 0 0 8px 0;
 }
 
 .book-modal-price {
-  font-size: 16px;
-  font-weight: 600;
-  color: #111;
-  margin: 0 0 20px 0;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #0b0500;
+  margin: 0 0 8px 0;
 }
 
 /* ----- Блок з кнопками ----- */
 .book-modal-actions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 16px;
+  margin-bottom: 32px;
 }
-
+.book-modal-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 .quantity-control {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgba(17, 17, 17, 0.3);
-  border-radius: 40px;
   padding: 6px;
   width: 120px;
-  margin: 0 auto 10px;
 }
 
 .qty-btn {
+  border: 1px solid #0b0500;
+  border-radius: 4px;
+  width: 32px;
+  height: 40px;
   background: transparent;
-  border: none;
-  font-size: 24px;
-  font-weight: 300;
-  color: #111;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0500;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
-  line-height: 1;
   padding: 0;
 }
 
 .qty-value {
+  background: rgba(11, 5, 0, 0.05);
+  display: flex;
+  width: 42px;
+  height: 40px;
+  border: 1px solid rgba(17, 17, 17, 0.3);
+  border-radius: 4px;
   font-size: 16px;
   font-weight: 600;
   min-width: 30px;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-to-cart-btn,
 .buy-now-btn {
-  padding: 14px 28px;
-  border-radius: 40px;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 12px 24px;
+  width: 100%;
+  height: 48px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%;
 }
 
 .add-to-cart-btn {
-  background-color: #e85e21;
+  background-color: #e15d05;
   color: #fff;
-  border: 2px solid #e85e21;
+  border: 1px solid #e15d05;
 }
 
 .add-to-cart-btn:hover {
@@ -170,8 +181,11 @@
 
 .buy-now-btn {
   background-color: transparent;
-  color: #111;
-  border: 2px solid #111;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0500;
+  border: 1px solid #0b0500;
 }
 
 .buy-now-btn:hover {
@@ -193,7 +207,9 @@
 .book-modal-details summary {
   padding-bottom: 10px;
   font-weight: 600;
-  color: #111;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #0b0500;
   cursor: pointer;
   list-style: none; /* Прибирає стандартний маркер */
   display: flex;
@@ -218,23 +234,24 @@
 }
 
 .book-modal-details p {
-  padding: 10px 0;
-  font-size: 14px;
-  line-height: 1.4;
-  color: rgba(17, 17, 17, 0.8);
+  padding: 0px 0px 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0500;
   margin: 0;
 }
-.noScroll{
+.noScroll {
   overflow: hidden;
 }
 
 /* ============================================== */
 /* ----- ПЛАНШЕТ (від 768px) ----- */
 /* ============================================== */
-@media (min-width: 768px) and (max-width: 1440px){
-    #books .book-modal {
-      padding: 64px 32px;
-    }
+@media (min-width: 768px) and (max-width: 1439px) {
+  #books .book-modal {
+    padding: 64px 32px;
+  }
 }
 @media (min-width: 0px) and (max-width: 768px) {
   #books .book-modal {
@@ -244,7 +261,8 @@
 @media screen and (min-width: 768px) {
   .book-modal {
     max-width: 704px;
-    padding: 64px 104px;
+    min-height: 664px;
+    padding: 64px 32px;
   }
 
   .modal-close-btn {
@@ -254,7 +272,7 @@
 
   .book-modal-wrapper {
     display: grid;
-    grid-template-columns: 192px 1fr;
+    grid-template-columns: 309px 1fr;
     gap: 0 24px;
     grid-template-areas:
       'image title'
@@ -285,9 +303,8 @@
 
   .book-modal-actions {
     grid-area: actions;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
+    flex-direction: column;
+    gap: 24px;
     margin-top: 24px;
     margin-bottom: 0;
   }
@@ -298,7 +315,7 @@
 
   .add-to-cart-btn,
   .buy-now-btn {
-    width: auto;
+    width: 309px;
   }
 
   .book-modal-details {
@@ -313,6 +330,7 @@
 @media screen and (min-width: 1440px) {
   .book-modal {
     max-width: 1300px;
+    padding: 64px 104px;
   }
 
   .book-modal-wrapper {
@@ -322,5 +340,8 @@
 
   .book-modal-image {
     max-width: 275px;
+  }
+  .book-modal-btn {
+    flex-direction: row;
   }
 }
