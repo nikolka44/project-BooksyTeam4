@@ -39,11 +39,22 @@ function updateShowMoreButton() {
 
 // ====== Функція відмалювання книг (без нових запитів) ======
 function renderVisibleBooks() {
+  // Переконаємось, що visibleBooksCount не більше, ніж доступно
+  visibleBooksCount = Math.min(visibleBooksCount, currentBooks.length);
+
   // Беремо потрібну кількість книг з масиву
   const booksToRender = currentBooks.slice(0, visibleBooksCount);
   renderBookCardlist(booksToRender);
 
-  // НОВЕ: Оновлюємо стан кнопки після кожного рендеру
+  // Оновлюємо лічильники
+  if (refs.booksShown) {
+    refs.booksShown.textContent = visibleBooksCount;
+  }
+  if (refs.booksTotal) {
+    refs.booksTotal.textContent = currentBooks.length;
+  }
+
+  // Оновлюємо стан кнопки після кожного рендеру
   updateShowMoreButton();
 
   // Ініціалізуємо модалку для нових карток
@@ -116,7 +127,6 @@ async function initCategories() {
     console.error('initCategories error:', error);
   }
 }
-
 
 // ====== Початкова ініціалізація ======
 async function initBooks() {

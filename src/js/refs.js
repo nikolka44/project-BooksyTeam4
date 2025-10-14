@@ -7,4 +7,6 @@ export const refs = {
   bookModalBackdrop: document.querySelector('#book-modal-backdrop'),
   bookModalContent: document.querySelector('.book-modal-content'),
   bookModalClose: document.querySelector('#book-modal-close'),
+  booksShown: document.querySelector('.books-shown'),
+  booksTotal: document.querySelector('.books-total'),
 };
