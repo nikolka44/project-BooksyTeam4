@@ -1,44 +1,41 @@
 import Swiper from 'swiper';
-import { Navigation, Pagination, Keyboard, A11y, Autoplay } from 'swiper/modules';
+import { Navigation, Keyboard, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
-const swiper = new Swiper('.swiper', {
-    modules: [Navigation, Pagination, Keyboard, A11y, Autoplay],
-    slidesPerView: 1,
-    loop: false,
-    speed: 400,
-    watchOverflow: true,
-    simulateTouch: true,
-    grabCursor: true,
-    navigation: {
-        nextEl: '.hero__button--next',
-        prevEl: '.hero__button--prev',
-    },
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-    keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-    },
-    on: {
-        init: function () {
-            updateButtons(this);
-        },
-        slideChange: function () {
-            updateButtons(this);
+const prevBtn = document.querySelector('.hero__button--prev');
+const nextBtn = document.querySelector('.hero__button--next');
+
+if (prevBtn && nextBtn) {
+    const swiper = new Swiper('.swiper', {
+        modules: [Navigation, Keyboard, Autoplay],
+        slidesPerView: 1,
+        speed: 400,
+        grabCursor: true,
+        watchOverflow: true,
+        simulateTouch: true,
+        loop: false,
+
+        navigation: { nextEl: nextBtn, prevEl: prevBtn },
+
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
         },
 
-    },
-});
+        keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+        },
 
-function updateButtons(swiper) {
-    const prevBtn = document.querySelector('.hero__button--prev');
-    const nextBtn = document.querySelector('.hero__button--next');
+        on: {
+            init: updateButtons,
+            slideChange: updateButtons,
+        },
+    });
 
-    prevBtn.disabled = swiper.isBeginning;
-    nextBtn.disabled = swiper.isEnd;
+    function updateButtons(swiper) {
+        prevBtn.disabled = swiper.isBeginning;
+        nextBtn.disabled = swiper.isEnd;
+    }
 }
