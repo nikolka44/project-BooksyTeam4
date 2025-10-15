@@ -3,6 +3,7 @@ console.log('Events.js loaded'); // ✅ Для перевірки
 // Чекаємо завантаження DOM
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded fired in events.js');
+
   // ========== SLIDER LOGIC ==========
   const slider = document.querySelector('.events-list');
   const slides = document.querySelectorAll('.event-item');
@@ -25,19 +26,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateSlider() {
     const visible = getVisibleCount();
-    
-        // Для мобільної та планшета
+
+    // Для мобільної та планшета
     const slideWidth = slides[0].offsetWidth;
     const gap = window.innerWidth >= 768 ? 24 : 24;
     const offset = currentIndex * (slideWidth + gap);
-    
+
     slider.style.transform = `translateX(-${offset}px)`;
-    
+
     // Оновлення кнопок
     const maxIndex = Math.max(0, slides.length - visible);
     if (prevBtn) prevBtn.disabled = currentIndex === 0;
     if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
-    
+
     // Оновлення пагінації
     paginationDots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
@@ -65,7 +66,83 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Пагінація - клік по точках
+  document.addEventListener('keydown', e => {
+    const active = document.activeElement;
+    const isTyping =
+      active &&
+      (active.tagName === 'INPUT' ||
+        active.tagName === 'TEXTAREA' ||
+        active.isContentEditable);
+    if (isTyping) return;
+
+    if (e.key === 'ArrowRight') {
+      const visible = getVisibleCount();
+      const maxIndex = Math.max(0, slides.length - visible);
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateSlider();
+      }
+    } else if (e.key === 'ArrowLeft') {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    }
+  });
+
+  let startX = 0;
+  let isDragging = false;
+
+  // mouse
+  slider.addEventListener('mousedown', e => {
+    // Если клик по интерактивному элементу внутри слайда — не начинаем свайп
+    if (e.target.closest('button, a, input, textarea, select')) return;
+    isDragging = true;
+    startX = e.clientX;
+  });
+
+  slider.addEventListener('mouseup', e => {
+    if (!isDragging) return;
+    const endX = e.clientX;
+    const diff = startX - endX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        const visible = getVisibleCount();
+        const maxIndex = Math.max(0, slides.length - visible);
+        if (currentIndex < maxIndex) currentIndex++;
+      } else {
+        if (currentIndex > 0) currentIndex--;
+      }
+      updateSlider();
+    }
+    isDragging = false;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDragging = false;
+  });
+
+  slider.addEventListener('touchstart', e => {
+    if (!e.touches || !e.touches[0]) return;
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener('touchend', e => {
+    if (!e.changedTouches || !e.changedTouches[0]) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        const visible = getVisibleCount();
+        const maxIndex = Math.max(0, slides.length - visible);
+        if (currentIndex < maxIndex) currentIndex++;
+      } else {
+        if (currentIndex > 0) currentIndex--;
+      }
+      updateSlider();
+    }
+  });
+
   paginationDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
       const visible = getVisibleCount();
@@ -75,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Оновлення при зміні розміру екрана
   let resizeTimeout;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
@@ -106,57 +182,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('Found event buttons:', eventButtons.length);
 
-  // Відкриття модального вікна
-  eventButtons.forEach((btn, index) => {
-    console.log(`Setting up button ${index}`, btn);
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const eventName = btn.getAttribute('data-event');
-      console.log('Button clicked, event:', eventName);
-      modalEventName.textContent = eventName;
-      modal.classList.remove('is-hidden');
-      document.body.style.overflow = 'hidden';
-    });
-  });
+  function handleModalKeydown(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  }
 
-  // Закриття модального вікна
+  function openModal(eventName) {
+    modalEventName.textContent = eventName;
+    modal.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
+
+    // Добавляем слушатель только при открытии
+    document.addEventListener('keydown', handleModalKeydown);
+  }
+
   function closeModal() {
     modal.classList.add('is-hidden');
     document.body.style.overflow = '';
     eventForm.reset();
+
+    document.removeEventListener('keydown', handleModalKeydown);
   }
 
-  modalClose.addEventListener('click', (e) => {
+  eventButtons.forEach((btn, index) => {
+    console.log(`Setting up button ${index}`, btn);
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const eventName = btn.getAttribute('data-event');
+      console.log('Button clicked, event:', eventName);
+      openModal(eventName);
+    });
+  });
+
+  modalClose.addEventListener('click', e => {
     e.preventDefault();
     closeModal();
   });
 
-  // Закриття по кліку на backdrop
-  modal.addEventListener('click', (e) => {
+  modal.addEventListener('click', e => {
     if (e.target === modal) {
       closeModal();
     }
   });
 
-  // Закриття по Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('is-hidden')) {
-      closeModal();
-    }
-  });
-
-  // Відправка форми
-  eventForm.addEventListener('submit', (e) => {
+  eventForm.addEventListener('submit', e => {
     e.preventDefault();
-    
+
     const formData = new FormData(eventForm);
     const data = Object.fromEntries(formData);
-    
+
     console.log('Form submitted:', data);
-    
-    // Показати повідомлення
-    alert(`Thank you for registering for "${modalEventName.textContent}"! We'll contact you soon.`);
-    
+
+    alert(
+      `Thank you for registering for "${modalEventName.textContent}"! We'll contact you soon.`
+    );
+
     closeModal();
   });
 });
