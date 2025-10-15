@@ -29,6 +29,25 @@ async function onLearnMoreClick(e) {
   }
 }
 
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-action]');
+  const spanCounter = document.querySelector('.qty-value');
+  if (!btn) return;
+
+  const action = btn.dataset.action;
+  if (action === 'increase') {
+    if (spanCounter.textContent >= 0) {
+      spanCounter.textContent++;
+    }
+  } else if (action === 'decrease') {
+    if (spanCounter.textContent > 1) {
+      spanCounter.textContent--;
+    }
+  }
+});
+
+
 function openBookModal(book) {
   refs.bookModalContent.innerHTML = renderBookModal(book);
   refs.bookModalBackdrop.classList.remove('is-hidden');
