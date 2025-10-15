@@ -4,7 +4,7 @@
 
 /* змінні для швидкого налаштування */
 :root {
-  --books-gap: 16px;
+  --books-gap: 40px 24px;
   --books-card-radius: 8px;
   --books-bg: #fceee6;
   --books-card-bg: #fceee6;
@@ -144,7 +144,7 @@
 .books-cards-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-bottom: 24px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--books-gap);
@@ -165,8 +165,8 @@
   border-radius: var(--books-card-radius);
 }
 .books-card-text-wrapper {
-  padding: 16px 0;
-  margin-top: auto; /* Притискає текст до низу, якщо картинки різної висоти */
+  margin: 16px 0;
+  /* margin-top: auto; Притискає текст до низу, якщо картинки різної висоти */
   display: flex;
   align-items: first baseline;
   justify-content: space-between;
@@ -181,10 +181,13 @@
   text-overflow: ellipsis; /* Додаємо три крапки в кінці */
 }
 .books-card-author {
+  width: 175px;
   font-size: 14px;
   line-height: 1.5;
   color: #666;
-  /* margin: 0 0 8px; */
+  white-space: nowrap; /* Забороняємо перенос на новий рядок */
+  overflow: hidden; /* Ховаємо все, що не вміщується */
+  text-overflow: ellipsis; /* Додаємо три крапки в кінці */
 }
 .books-card-price {
   /* padding: 0 12px 12px; */
@@ -194,7 +197,6 @@
 
 /* Кнопка */
 .books-card-btn {
-  margin-bottom: 24px;
   background-color: transparent;
   border: 1px solid #0b0500;
   border-radius: 4px;
@@ -246,7 +248,6 @@
    Tablet (>=768px)
    ========================= */
 @media (min-width: 768px) {
-
   .books-categories-wrapper {
     margin-bottom: 32px;
     display: flex;
@@ -265,7 +266,7 @@
   /* сітка: tablet — 2 колонки (великие картинки) */
   .books-cards-list {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: var(--books-gap);
   }
   /* Show More Button */
   .show-more-btn {
@@ -359,12 +360,12 @@
   /* Сітка: desktop — 4 колонки (зручно для 24 карток) */
   .books-cards-list {
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px 24px;
+    gap: var(--books-gap);
   }
 }
 
 @media (min-width: 0px) and (max-width: 1440px) {
-  .books-card-image{
+  .books-card-image {
     height: 483px;
   }
 }
