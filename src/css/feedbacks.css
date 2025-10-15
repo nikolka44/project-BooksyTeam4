@@ -77,12 +77,18 @@
   border-radius: 50%;
   background: #0b0500;
   opacity: 0.2;
+  border: 0;
+  padding: 0;
   display: inline-block;
   cursor: pointer;
 }
 .feedbacks__dots-elem.is-active {
   background: #0b0500;
   opacity: 1;
+}
+.feedbacks__dots-elem:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
 }
 .feedbacks__btn-slider {
   display: flex;
