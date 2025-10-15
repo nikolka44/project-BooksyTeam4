@@ -3,16 +3,12 @@
 /* -------------------- */
 
 .hero {
-    padding: 0px 16px 32px;
-    width: 375px;
-    height: 471px;
+    padding-bottom: 32px;
     background-color: #fceee6;
     margin: auto;
 }
 
 .hero__container {
-    max-width: 343px;
-    max-height: 439px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -99,13 +95,12 @@
     align-items: flex-end;
     flex-direction: column-reverse;
     gap: 24px;
+    margin-top: 24px;
 }
 
 .hero__buttons {
     display: flex;
     gap: 16px;
-    padding-top: 24px;
-
 }
 
 /* КНОПКА */
@@ -168,13 +163,9 @@
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: #0b0500;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
+
     gap: 24px;
-    width: 343px;
-    height: 144px;
+
 }
 
 /* -------------------- */
@@ -184,7 +175,6 @@
     .hero {
         width: 768px;
         height: 426px;
-        padding: 0px 32px 32px;
         background-color: #fceee6;
         position: relative;
     }
@@ -249,7 +239,6 @@
         align-items: flex-start;
         flex-direction: row;
         width: 100%;
-        padding-top: 24px;
         gap: 0;
 
     }
@@ -267,8 +256,6 @@
         line-height: 1.2;
         font-weight: 600;
         letter-spacing: -0.01em;
-        width: 560px;
-        height: 96px;
         color: #0b0500;
         text-align: left;
 
@@ -283,7 +270,7 @@
     .hero {
         width: 1440px;
         height: 513px;
-        padding: 0px 64px 32px;
+
     }
 
     .hero__container {
@@ -328,7 +315,5 @@
 
     .hero__title {
         font-size: 52px;
-        width: 1168px;
-        height: 62px;
     }
 }
