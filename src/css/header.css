@@ -54,7 +54,7 @@
   }
 
   .header-container {
-    padding: 0 32px;
+    padding: 16px 32px;
   }
   .img-logo {
     width: 84px;
@@ -63,7 +63,6 @@
 
   .logo-header {
     margin-right: 207px;
-    padding: 18px 0;
   }
 
   /* Відображаємо навігацію у хедері */
@@ -82,7 +81,7 @@
     text-decoration: none;
 
     display: block;
-    padding: 24px 0px;
+    padding: 8px 0px;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
@@ -95,7 +94,7 @@
 
 @media only screen and (min-width: 1440px) {
   .header-container {
-    padding: 0 64px;
+    padding: 16px 64px;
   }
 
   .logo-header {
