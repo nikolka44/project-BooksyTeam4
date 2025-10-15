@@ -1,0 +1,347 @@
+/* ================================================= */
+/* BOOK MODAL STYLES — Mobile-first            */
+/* ================================================= */
+
+/* ----- Backdrop (темний фон) ----- */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.6);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ----- Загальний контейнер модального вікна ----- */
+.book-modal {
+  position: relative;
+  background-color: #fceee6;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: calc(100% - 40px);
+  max-width: 335px; /* Згідно з макетом */
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.backdrop.is-hidden .book-modal {
+  transform: scale(0.9);
+}
+
+/* ----- Кнопка закриття "х" ----- */
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: #111;
+  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 0;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  transform: rotate(90deg);
+  color: #e85e21;
+}
+
+/* ----- Внутрішній контент (Mobile First) ----- */
+.book-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-modal-image {
+  width: 309px;
+  height: 467px;
+  border-radius: 8px;
+  margin: 0 auto 24px auto;
+}
+.book-modal-describe {
+  display: flex;
+  flex-direction: column;
+}
+.book-modal-title {
+  font-weight: 600;
+  font-size: 40px;
+  color: #0b0500;
+  margin: 0 0 8px 0;
+}
+
+.book-modal-author {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #0b0500;
+  margin: 0 0 8px 0;
+}
+
+.book-modal-price {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #0b0500;
+  margin: 0 0 8px 0;
+}
+
+/* ----- Блок з кнопками ----- */
+.book-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.book-modal-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.quantity-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+  width: 120px;
+}
+
+.qty-btn {
+  border: 1px solid #0b0500;
+  border-radius: 4px;
+  width: 32px;
+  height: 40px;
+  background: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.qty-value {
+  background: rgba(11, 5, 0, 0.05);
+  display: flex;
+  width: 42px;
+  height: 40px;
+  border: 1px solid rgba(17, 17, 17, 0.3);
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-to-cart-btn,
+.buy-now-btn {
+  border-radius: 4px;
+  padding: 12px 24px;
+  width: 100%;
+  height: 48px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart-btn {
+  background-color: #e15d05;
+  color: #fff;
+  border: 1px solid #e15d05;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #d15018;
+  border-color: #d15018;
+}
+
+.buy-now-btn {
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0500;
+  border: 1px solid #0b0500;
+}
+
+.buy-now-btn:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+/* ----- Деталі (акордеон) ----- */
+.book-modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.book-modal-details details {
+  border-bottom: 1px solid rgba(17, 17, 17, 0.2);
+}
+
+.book-modal-details summary {
+  padding-bottom: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #0b0500;
+  cursor: pointer;
+  list-style: none; /* Прибирає стандартний маркер */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-modal-details summary::-webkit-details-marker {
+  display: none; /* Прибирає стандартний маркер для Chrome/Safari */
+}
+
+/* Стрілочка для акордеону */
+.book-modal-details summary::after {
+  content: '▼';
+  font-size: 12px;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.book-modal-details details[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.book-modal-details p {
+  padding: 0px 0px 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0500;
+  margin: 0;
+}
+.noScroll {
+  overflow: hidden;
+}
+
+/* ============================================== */
+/* ----- ПЛАНШЕТ (від 768px) ----- */
+/* ============================================== */
+@media (min-width: 768px) and (max-width: 1439px) {
+  #books .book-modal {
+    padding: 64px 32px;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  #books .book-modal {
+    padding: 64px 16px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .book-modal {
+    max-width: 704px;
+    min-height: 664px;
+    padding: 64px 32px;
+  }
+
+  .modal-close-btn {
+    top: 24px;
+    right: 24px;
+  }
+
+  .book-modal-wrapper {
+    display: grid;
+    grid-template-columns: 309px 1fr;
+    gap: 0 24px;
+    grid-template-areas:
+      'image title'
+      'image author'
+      'image price'
+      'image actions'
+      'details details';
+  }
+
+  .book-modal-image {
+    grid-area: image;
+    margin: 0;
+  }
+
+  .book-modal-title {
+    grid-area: title;
+    font-size: 24px;
+  }
+
+  .book-modal-author {
+    grid-area: author;
+  }
+
+  .book-modal-price {
+    grid-area: price;
+    margin-bottom: 0;
+  }
+
+  .book-modal-actions {
+    grid-area: actions;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+
+  .quantity-control {
+    margin: 0;
+  }
+
+  .add-to-cart-btn,
+  .buy-now-btn {
+    width: 309px;
+  }
+
+  .book-modal-details {
+    grid-area: details;
+    margin-top: 40px;
+  }
+}
+
+/* =============================================== */
+/* ----- ДЕСКТОП (від 1440px) ----- */
+/* =============================================== */
+@media screen and (min-width: 1440px) {
+  .book-modal {
+    max-width: 1300px;
+    padding: 64px 104px;
+  }
+
+  .book-modal-wrapper {
+    grid-template-columns: 275px 1fr;
+    gap: 0 40px;
+  }
+
+  .book-modal-image {
+    max-width: 275px;
+  }
+  .book-modal-btn {
+    flex-direction: row;
+  }
+}
