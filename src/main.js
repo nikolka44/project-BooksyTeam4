@@ -1,11 +1,7 @@
-import { getCategoryList, getTopBooks } from './js/api-functions.js';
-import {
-  renderCategoryList,
-  renderBookCardlist,
-} from './js/render-functions.js';
+import './js/books.js';
 import './js/hero.js';
 import './js/feedbacks.js';
-import './js/menu.js';
+import './js/events.js';
 // import { getCategoryList } from './js/api-functions.js';
 // import { renderCategoryList } from './js/render-functions.js';
 
@@ -18,7 +14,7 @@ async function initCategories() {
     console.error(error);
   }
 }
-initCategories();
+// initCategories();
 
 async function initBooks() {
   try {
@@ -36,4 +32,5 @@ async function initBooks() {
     console.error('initBooks error:', error);
   }
 }
-initBooks();
+// initBooks();
+import './js/menu.js';

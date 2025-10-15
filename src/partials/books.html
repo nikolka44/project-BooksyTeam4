@@ -1,39 +1,44 @@
-<section id="books" class="books">
-  <container class="container">
+<section id="books" class="books-section">
+  <div class="container">
     <h2 class="visually-hidden">Trending books</h2>
 
     <div class="books-categories-wrapper">
       <div class="books-title-wrapper">
         <h3 class="books-subtitle">Books</h3>
-        <p class="books-count">Showing 24 of 100</p>
+        <p class="books-counter">
+          Showing <span class="books-shown">0</span> of
+          <span class="books-total">0</span>
+        </p>
       </div>
 
       <div class="categories-container">
-        <!-- Мобільний dropdown -->
+        <!-- Мобільний-планшет dropdown список категорій -->
         <div class="dropdown">
           <button type="button" class="dropdown-toggle">Categories</button>
           <ul class="dropdown-menu"></ul>
         </div>
 
-        <!-- Десктопний список -->
-        <ul class="categories"></ul>
+        <!-- Десктопний список категорій-->
+        <div class="books-categories">
+          <ul class="categories-list"></ul>
+        </div>
       </div>
     </div>
-
     <div class="books-list-wrapper">
-      <ul class="books-cards-list">
-        <!-- Заготовка під картку -->
-        <!-- <li class="books-card">
-        <img class="books-card-image" src="" alt="" />
-        <div class="books-card-text-wrapper">
-          <h3 class="books-card-title">Book title</h3>
-          <p class="books-card-author">Book author</p>
-        </div>
-        <p class="books-card-price">$</p>
-        <button class="books-card-btn" type="button">Learn More</button>
-      </li> -->
-      </ul>
-      <button class="books-btn" type="button">Show More</button>
+      <ul class="books-cards-list"></ul>
+      <button class="show-more-btn" type="button">Show More</button>
     </div>
-  </container>
+  </div>
+
+  <!-- ================== Book Modal ================== -->
+  <div class="backdrop is-hidden" id="book-modal-backdrop">
+    <div class="book-modal">
+      <button type="button" class="modal-close-btn" id="book-modal-close">
+        ✕
+      </button>
+      <div class="book-modal-content">
+        <!-- Контент книги рендериться сюди через JS -->
+      </div>
+    </div>
+  </div>
 </section>

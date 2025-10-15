@@ -14,6 +14,9 @@
   padding: 32px;
 }
 .feedbacks__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 48px;
   height: 48px;
   border: 1px solid rgba(11, 5, 0, 0.15);
@@ -90,7 +93,7 @@
   margin-top: 32px;
 }
 .feedbacks__container {
-  padding: 0 16px;
+  padding: 64px 16px;
 }
 .feedbacks__title {
   margin-bottom: 24px;
@@ -118,10 +121,21 @@
   font-size: 16px;
 }
 @media only screen and (min-width: 768px) {
-   .feedbacks__elements {
+  .feedbacks__elements {
     min-height: 244px;
-   }
+  }
   .feedbacks__container {
-    padding: 0 32px;
+    padding: 64px 32px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .feedbacks__container {
+    padding: 64px 64px;
+  }
+  .feedbacks__elements {
+    min-height: 217px;
+  }
+  .feedbacks__title {
+    font-size: 48px;
   }
 }
