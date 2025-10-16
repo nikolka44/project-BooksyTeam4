@@ -418,6 +418,7 @@
   }
 
   .modal-form {
+    max-width: 640px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -456,7 +457,7 @@
 
   .modal-form {
     width: 100%;
-    max-width: 520px;
+    max-width: 7380px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
