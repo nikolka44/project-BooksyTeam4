@@ -153,6 +153,7 @@
   min-width: 30px;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .add-to-cart-btn,
@@ -202,6 +203,7 @@
 
 .book-modal-details details {
   border-bottom: 1px solid rgba(17, 17, 17, 0.2);
+  transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
 .book-modal-details summary {
