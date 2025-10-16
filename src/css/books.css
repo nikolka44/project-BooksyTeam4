@@ -231,7 +231,7 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 .show-more-btn:hover {
-  background-color: #ea8d50;
+  background-color: #fceee6;
   color: #0b0500;
   opacity: 0.95;
   border: 1px solid #0b0500;
