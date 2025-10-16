@@ -3,16 +3,12 @@
 /* -------------------- */
 
 .hero {
-    padding: 0px 16px 32px;
-    width: 375px;
-    height: 471px;
-    background-color: #fceee6;
     margin: auto;
+    padding-bottom: 32px;
+    background-color: #fceee6;
 }
 
 .hero__container {
-    max-width: 343px;
-    max-height: 439px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -28,7 +24,6 @@
 
 .hero__list {
     list-style: none;
-
 }
 
 .hero__item {
@@ -56,34 +51,31 @@
 
 .hero__discount {
     font-family: "Rubik", sans-serif;
-    min-width: 172px;
-    max-height: 56px;
     font-weight: 600;
     font-size: 20px;
     line-height: 1.4;
     letter-spacing: -0.01em;
     color: #fff;
+    min-width: 172px;
+    max-height: 56px;
 }
-
-
-
 
 .hero__btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 117px;
+    min-height: 20px;
     background-color: #e15d05;
+    border: 0.52px solid #e15d05;
+    border-radius: 2px;
     color: #fff;
     font-weight: 400;
     font-size: 8px;
     line-height: 1.5;
-    border: 0.52px solid #e15d05;
-    border-radius: 2px;
-    max-width: 117px;
-    min-height: 20px;
     text-decoration: none;
-    z-index: 2;
     cursor: pointer;
+    z-index: 2;
     transition: background-color 0.3s;
 }
 
@@ -92,43 +84,41 @@
     background-color: #ea8d50;
 }
 
-
+/* --- Bottom section --- */
 .hero__bottom {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
     flex-direction: column-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
     gap: 24px;
+    margin-top: 24px;
 }
 
 .hero__buttons {
     display: flex;
     gap: 16px;
-    padding-top: 24px;
-
 }
 
-/* КНОПКА */
+/* --- Slider arrows --- */
 .hero__button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e15d05;
-    border: 1px solid rgba(11, 5, 0, 0.15);
     width: 48px;
     height: 48px;
+    background-color: #e15d05;
+    border: 1px solid rgba(11, 5, 0, 0.15);
     cursor: pointer;
     transition: background-color 0.2s ease, opacity 0.2s ease;
 }
 
-/* ИКОНКА */
 .hero__icon {
     width: 24px;
     height: 24px;
     transition: fill 0.2s ease;
 }
 
-/* Hover / Focus */
+/* States */
 .hero__button:hover,
 .hero__button:focus {
     background-color: #fceee6;
@@ -139,7 +129,6 @@
     fill: #0b0500;
 }
 
-/* Active */
 .hero__button:active {
     background-color: #5a2502;
 }
@@ -148,7 +137,6 @@
     fill: #fff;
 }
 
-/* Disabled */
 .hero__button:disabled {
     background-color: #e15d05;
     opacity: 0.2;
@@ -168,13 +156,7 @@
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: #0b0500;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
     gap: 24px;
-    width: 343px;
-    height: 144px;
 }
 
 /* -------------------- */
@@ -182,49 +164,27 @@
 /* -------------------- */
 @media (min-width: 768px) {
     .hero {
-        width: 768px;
-        height: 426px;
-        padding: 0px 32px 32px;
-        background-color: #fceee6;
         position: relative;
     }
 
-    .hero__container {
-        max-width: 704px;
-        min-height: 394px;
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    /* --- Slider --- */
-
-
     .hero__item {
-        border-radius: 16px;
         width: 704px;
         max-height: 274px;
+        border-radius: 16px;
     }
 
     .hero__image {
-        display: block;
         width: 704px;
         height: 274px;
-        object-fit: cover;
     }
 
-
-    /* --- Overlay text + button --- */
     .hero__overlay {
-        position: absolute;
         bottom: 32px;
         left: 40px;
-        display: flex;
         gap: 16px;
     }
 
     .hero__discount {
-        bottom: 20px;
         font-size: 32px;
         line-height: 1.2;
         min-width: 274px;
@@ -233,81 +193,48 @@
 
     .hero__btn {
         font-size: 16px;
-        font-weight: 400;
-        line-height: 1.5;
         padding: 8px 20px;
         border-radius: 4px;
         border: 1px solid #e15d05;
-        color: #fff;
         max-width: 164px;
         min-height: 32px;
     }
 
     .hero__bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
         flex-direction: row;
-        width: 100%;
-        padding-top: 24px;
+        align-items: flex-start;
+        justify-content: space-between;
         gap: 0;
-
+        width: 100%;
     }
 
     .hero__buttons {
         max-width: 144px;
-
     }
 
-
-
-    /* --- Title --- */
     .hero__title {
         font-size: 40px;
-        line-height: 1.2;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        width: 560px;
-        height: 96px;
-        color: #0b0500;
         text-align: left;
-
     }
-
 }
 
 /* -------------------- */
 /* 🖥️ Desktop ≥1440px */
 /* -------------------- */
 @media (min-width: 1440px) {
-    .hero {
-        width: 1440px;
-        height: 513px;
-        padding: 0px 64px 32px;
-    }
-
-    .hero__container {
-        max-width: 1312px;
-        min-height: 481px;
-    }
-
     .hero__item {
         width: 1312px;
         max-height: 395px;
     }
 
     .hero__image {
-        display: block;
         width: 1312px;
         height: 395px;
-        object-fit: cover;
     }
 
     .hero__overlay {
-        position: absolute;
         bottom: 56px;
         left: 56px;
-        display: flex;
         gap: 20px;
     }
 
@@ -328,7 +255,5 @@
 
     .hero__title {
         font-size: 52px;
-        width: 1168px;
-        height: 62px;
     }
 }
