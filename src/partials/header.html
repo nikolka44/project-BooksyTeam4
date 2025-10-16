@@ -23,19 +23,24 @@
       </ul>
     </nav>
 
-    <button id="burger-btn" type="button" data-menu-open>
+    <button id="burger-btn" type="button" aria-label="Open menu" data-menu-open>
       <svg class="burger-icon" width="24" height="24">
         <use href="./img/icons.svg#icon-menu"></use>
       </svg>
     </button>
   </div>
   <div class="mobile-menu" data-menu>
-    <div class="mob-menu-container">
+    <div class="container mob-menu-container">
       <div class="mob-menu-clos">
         <a class="logo-header" href="./index.html"
           ><img class="img-logo" src="/img/logo.svg" alt="Logo"
         /></a>
-        <button type="button" class="mob-menu-clos-btn" data-menu-close>
+        <button
+          type="button"
+          class="mob-menu-clos-btn"
+          aria-label="Close menu"
+          data-menu-close
+        >
           <svg class="menu-clos-icon" width="24" height="24">
             <use href="./img/icons.svg#icon-x"></use>
           </svg>
