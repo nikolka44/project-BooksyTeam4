@@ -25,7 +25,7 @@ const feedbacksSwiper = new Swiper('.swiper-feedbacks', {
   grabCursor: true,
 
   breakpoints: {
-    0: { slidesPerView: 1, spaceBetween: 16 },
+    0: { slidesPerView: 1, spaceBetween: 0 },
     768: { slidesPerView: 2, spaceBetween: 24 },
     1440: { slidesPerView: 3, spaceBetween: 24 },
   },
@@ -34,8 +34,13 @@ const feedbacksSwiper = new Swiper('.swiper-feedbacks', {
 
   a11y: {
     enabled: true,
+    slideRole: 'group', 
+    itemRoleDescriptionMessage: 'slide',
+    slideLabelMessage: '{{index}} / {{slidesLength}}',
+    paginationBulletMessage: 'Go to slide {{index}}',
     prevSlideMessage: 'Previous testimonials',
     nextSlideMessage: 'Next testimonials',
+    wrapperLiveRegion: true, 
   },
 
   navigation: {
@@ -47,9 +52,18 @@ const feedbacksSwiper = new Swiper('.swiper-feedbacks', {
   pagination: {
     el: '.feedbacks__dots',
     clickable: true,
-    bulletElement: 'button',
+    bulletElement: 'button', 
     bulletClass: 'feedbacks__dots-elem',
     bulletActiveClass: 'is-active',
+    renderBullet: (index, className) => {
+      const slideId = `feedbacks-slide-${index + 1}`;
+      return `<button type="button"
+                      class="${className}"
+                      role="tab"
+                      aria-controls="${slideId}"
+                      aria-label="Go to testimonial ${index + 1}">
+              </button>`;
+    },
   },
 
   autoplay: {
@@ -61,9 +75,11 @@ const feedbacksSwiper = new Swiper('.swiper-feedbacks', {
   on: {
     afterInit(sw) {
       syncNavDisabled(sw);
+      fixSlidesAria(sw);
     },
     slideChange(sw) {
       syncNavDisabled(sw);
+      updateBulletAria(sw);
     },
   },
 });
@@ -82,3 +98,26 @@ function syncNavDisabled(sw) {
       next.classList.contains('is-disabled') ? 'true' : 'false'
     );
 }
+
+function fixSlidesAria(sw) {
+  const slides = sw.slides;
+  slides.forEach((slideEl, i) => {
+    if (!slideEl.id) slideEl.id = `feedbacks-slide-${i + 1}`;
+    slideEl.setAttribute('role', 'group'); 
+    slideEl.setAttribute('aria-roledescription', 'slide');
+    slideEl.setAttribute('aria-label', `${i + 1} of ${slides.length}`);
+  });
+  updateBulletAria(sw);
+}
+
+function updateBulletAria(sw) {
+  const bullets = sw.pagination?.bullets || [];
+  bullets.forEach((b, i) => {
+    const slideId = `feedbacks-slide-${i + 1}`;
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-controls', slideId);
+    b.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+    b.setAttribute('aria-selected', i === sw.activeIndex ? 'true' : 'false');
+  });
+}
+
