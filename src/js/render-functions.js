@@ -85,7 +85,7 @@ export function renderBookCardlist(topbooks) {
         // Отримуємо тільки цілу частину ціни
         const formattedPrice = parseInt(price);
         return `<li class="books-card" data-id="${_id}">
-        <img class="books-card-image" src="${book_image}" alt="${description}" />
+        <img loading="lazy" class="books-card-image" src="${book_image}" alt="${description}" />
          <div class="books-card-text-wrapper">
 
             <div class="books-card-info">
