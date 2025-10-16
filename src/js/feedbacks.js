@@ -1,10 +1,5 @@
 import Swiper from 'swiper';
-import {
-  Navigation,
-  Pagination,
-  Keyboard,
-  Autoplay,
-} from 'swiper/modules';
+import { Navigation, Pagination, Keyboard, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -50,6 +45,16 @@ if (prevBtnFeed && nextBtnFeed) {
       bulletElement: 'button',
       bulletClass: 'feedbacks__dots-elem',
       bulletActiveClass: 'is-active',
+      renderBullet: function (index, className) {
+        const slideId = `feedbacks-slide-${index + 1}`;
+        return `<button 
+            type="button"
+            class="${className}"
+            role="button"
+            aria-controls="${slideId}"
+            aria-label="Go to testimonial ${index + 1}">
+          </button>`;
+      },
     },
   });
 
