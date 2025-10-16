@@ -34,11 +34,15 @@
 }
 
 /* Бургер-меню показуємо відразу (основний елемент мобільної версії) */
-.burger-btn {
+#burger-btn {
   padding: 0;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+#burger-btn:hover {
+  transform: scale(1.1);
 }
 
 /* Приховуємо навігацію десктопної версії */
@@ -49,7 +53,7 @@
 /* ======= Планшет ======= */
 @media (min-width: 768px) {
   /* Ховаємо бургер-меню */
-  .burger-btn {
+  #burger-btn {
     display: none;
   }
 
