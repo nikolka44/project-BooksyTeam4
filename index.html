@@ -306,12 +306,13 @@
   aria-labelledby="feedbacks-heading"
 >
   <div class="feedbacks__container container">
-    <h2 class="feedbacks__title">Customer Feedbacks</h2>
-    <p class="feedbacks__title-text" id="feedbacks-heading">
+    <h2 class="feedbacks__title" id="feedbacks-heading">Customer Feedbacks</h2>
+    <p class="feedbacks__title-text">
       See what our readers are saying about us!
     </p>
     <div
       class="feedbacks__slider swiper-feedbacks"
+      role="group"
       aria-roledescription="carousel"
       aria-label="Customer testimonials"
       id="feedbacks-carousel"
@@ -412,8 +413,8 @@
         class="feedbacks__dots"
         role="tablist"
         aria-label="Choose testimonial"
+        aria-orientation="horizontal"
       >
-        <!-- <div class="feedbacks__dots-elem"></div> -->
       </div>
       <div class="feedbacks__btn-slider" aria-label="Carousel controls">
         <button
