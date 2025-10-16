@@ -1,12 +1,11 @@
 .footer-container {
-  padding-top: 80px;
-  padding-bottom: 80px;
   display: flex;
   flex-direction: column;
 }
 
 .footer {
   background-color: #ea8d50;
+  padding: 80px 0;
 }
 
 .footer-nav-wrapper {
