@@ -29,6 +29,15 @@
   cursor: pointer;
   transition: opacity 0.2s, transform 0.2s, background-color 0.2s;
 }
+.feedbacks__btn:disabled {
+  background-color: #e15d05;
+  opacity: 0.2;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.feedbacks__btn:disabled svg {
+  fill: #111;
+}
 .feedbacks__btn:focus-visible {
   outline: 2px solid #111;
   outline-offset: 2px;
