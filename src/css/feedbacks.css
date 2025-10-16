@@ -1,3 +1,6 @@
+.feedbacks {
+  padding: 64px 0;
+}
 .swiper-feedbacks {
   overflow: hidden;
 }
@@ -98,9 +101,6 @@
   display: flex;
   margin-top: 32px;
 }
-.feedbacks__container {
-  padding: 64px 16px;
-}
 .feedbacks__title {
   margin-bottom: 24px;
 }
@@ -130,14 +130,8 @@
   .feedbacks__elements {
     min-height: 244px;
   }
-  .feedbacks__container {
-    padding: 64px 32px;
-  }
 }
 @media only screen and (min-width: 1440px) {
-  .feedbacks__container {
-    padding: 64px 64px;
-  }
   .feedbacks__elements {
     min-height: 217px;
   }
