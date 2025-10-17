@@ -1,27 +1,24 @@
 <section id="hero" class="hero">
-  <div class="hero__container">
+  <div class="hero__container container">
     <div class="hero__slider swiper">
       <ul class="hero__list swiper-wrapper">
-        <!-- Slide 1 -->
+        <!-- Slide -->
         <li class="hero__item swiper-slide">
           <picture>
-            <!-- mobile -->
             <source
               srcset="
                 /img/hero/1-mob-ban-1x.webp 1x,
                 /img/hero/1-mob-ban-2x.webp 2x
               "
-              media="(min-width: 320px)"
+              media="(max-width: 767px)"
             />
-            <!-- tablet -->
             <source
               srcset="
                 /img/hero/1-tub-ban-1x.webp 1x,
                 /img/hero/1-tub-ban-2x.webp 2x
               "
-              media="(min-width: 768px)"
+              media="(min-width: 768px) and (max-width: 1439px)"
             />
-            <!-- desktop -->
             <source
               srcset="
                 /img/hero/1-des-ban-1x.webp 1x,
@@ -30,9 +27,12 @@
               media="(min-width: 1440px)"
             />
             <img
-              src="/img/hero/1-des-ban-1x-min.jpg"
+              src="/img/hero/1-des-ban-1x.webp"
               alt="Reading with coffee"
               class="hero__image"
+              width="343"
+              height="199"
+              fetchpriority="high"
             />
           </picture>
 
@@ -42,7 +42,7 @@
           </div>
         </li>
 
-        <!-- Slide 2 -->
+        <!-- Остальные слайды -->
         <li class="hero__item swiper-slide">
           <picture>
             <source
@@ -50,14 +50,14 @@
                 /img/hero/2-mob-ban-1x.webp 1x,
                 /img/hero/2-mob-ban-2x.webp 2x
               "
-              media="(min-width: 320px)"
+              media="(max-width: 767px)"
             />
             <source
               srcset="
                 /img/hero/2-tub-ban-1x.webp 1x,
                 /img/hero/2-tub-ban-2x.webp 2x
               "
-              media="(min-width: 768px)"
+              media="(min-width: 768px) and (max-width: 1439px)"
             />
             <source
               srcset="
@@ -67,9 +67,13 @@
               media="(min-width: 1440px)"
             />
             <img
-              src="/img/hero/2-des-ban-1x-min.jpg"
+              src="/img/hero/2-des-ban-1x.webp"
               alt="Books and candle"
               class="hero__image"
+              width="343"
+              height="199"
+              loading="lazy"
+              decoding="async"
             />
           </picture>
 
@@ -79,7 +83,6 @@
           </div>
         </li>
 
-        <!-- Slide 3 -->
         <li class="hero__item swiper-slide">
           <picture>
             <source
@@ -87,14 +90,14 @@
                 /img/hero/3-mob-ban-1x.webp 1x,
                 /img/hero/3-mob-ban-2x.webp 2x
               "
-              media="(min-width: 320px)"
+              media="(max-width: 767px)"
             />
             <source
               srcset="
                 /img/hero/3-tub-ban-1x.webp 1x,
                 /img/hero/3-tub-ban-2x.webp 2x
               "
-              media="(min-width: 768px)"
+              media="(min-width: 768px) and (max-width: 1439px)"
             />
             <source
               srcset="
@@ -104,9 +107,13 @@
               media="(min-width: 1440px)"
             />
             <img
-              src="/img/hero/3-des-ban-1x-min.jpg"
+              src="/img/hero/3-des-ban-1x.webp"
               alt="Sunlight and open book"
               class="hero__image"
+              width="343"
+              height="199"
+              loading="lazy"
+              decoding="async"
             />
           </picture>
 
@@ -119,7 +126,6 @@
           </div>
         </li>
 
-        <!-- Slide 4 -->
         <li class="hero__item swiper-slide">
           <picture>
             <source
@@ -127,14 +133,14 @@
                 /img/hero/4-mob-ban-1x.webp 1x,
                 /img/hero/4-mob-ban-2x.webp 2x
               "
-              media="(min-width: 320px)"
+              media="(max-width: 767px)"
             />
             <source
               srcset="
                 /img/hero/4-tub-ban-1x.webp 1x,
                 /img/hero/4-tub-ban-2x.webp 2x
               "
-              media="(min-width: 768px)"
+              media="(min-width: 768px) and (max-width: 1439px)"
             />
             <source
               srcset="
@@ -144,9 +150,13 @@
               media="(min-width: 1440px)"
             />
             <img
-              src="/img/hero/4-des-ban-1x-min.jpg"
+              src="/img/hero/4-des-ban-1x.webp"
               alt="Stack of books"
               class="hero__image"
+              width="343"
+              height="199"
+              loading="lazy"
+              decoding="async"
             />
           </picture>
 
@@ -159,7 +169,7 @@
         </li>
       </ul>
 
-      <!-- Кнопки -->
+      <!-- Навигация -->
       <div class="hero__bottom">
         <h1 class="hero__title">Discover Your Next Great Read Today!</h1>
         <div class="hero__buttons">
@@ -175,7 +185,7 @@
             class="hero__button hero__button--next"
             aria-label="Next slide"
           >
-            <svg class="hero__icon" width="24" height="24">
+            <svg class="hero__icon" aria-hidden="true" width="24" height="24">
               <use href="/img/icons.svg#icon-right-arrow"></use>
             </svg>
           </button>

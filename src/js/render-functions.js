@@ -85,7 +85,7 @@ export function renderBookCardlist(topbooks) {
         // Отримуємо тільки цілу частину ціни
         const formattedPrice = parseInt(price);
         return `<li class="books-card" data-id="${_id}">
-        <img class="books-card-image" src="${book_image}" alt="${description}" />
+        <img loading="lazy" class="books-card-image" src="${book_image}" alt="${description}" />
          <div class="books-card-text-wrapper">
 
             <div class="books-card-info">
@@ -101,7 +101,7 @@ export function renderBookCardlist(topbooks) {
       }
     )
     .join('');
-  refs.bookCardList.innerHTML = markupBooks;
+  refs.bookCardList.insertAdjacentHTML('beforeend', markupBooks);
 }
 
 export function renderBookModal(book) {
@@ -117,17 +117,25 @@ export function renderBookModal(book) {
         <p class="book-modal-author">${book.author}</p>
         <p class="book-modal-price">$${book.price}</p>
 
-        <div class="book-modal-actions">
+        <form class="book-modal-actions">
           <div class="quantity-control">
-            <button class="qty-btn" data-action="decrease">-</button>
-            <span class="qty-value">1</span>
-            <button class="qty-btn" data-action="increase">+</button>
+            <button type="button" class="qty-btn minus" data-action="decrease">-</button>
+            <input
+             type="number"
+             class="qty-value"
+             name="quantity"
+             value="1"
+             min="1"
+             max="99"
+             readonly
+      />
+            <button type="button" class="qty-btn plus" data-action="increase">+</button>
           </div>
           <div class="book-modal-btn">
-            <input type="button" class="add-to-cart-btn" data-action="addToCart" value="Add To Cart">
-            <input type="submit" class="buy-now-btn" data-action="buyNow" value="Buy Now">
+            <button type="button" class="add-to-cart-btn">Add To Cart</button>
+            <button type="submit" class="buy-now-btn">Buy Now</button>
           </div>
-        </div>
+        </form>
 
         <div class="book-modal-details">
           <details>

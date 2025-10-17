@@ -14,6 +14,7 @@ import {
 import { initBookModal } from './modal-book.js';
 
 // ====== Глобальні змінні ======
+
 let currentBooks = []; // усі завантажені книги
 let currentCategory = 'All categories'; // поточна категорія
 // Змінна для відстеження кількості видимих книг
@@ -25,6 +26,9 @@ const BOOKS_PER_PAGE = 4;
 function getInitialLimit() {
   return window.innerWidth < 768 ? 10 : 24;
 }
+
+// Початково ховаємо кнопку
+if (refs.showMoreBtn) refs.showMoreBtn.classList.add('is-hidden');
 
 //  Функція для оновлення видимості кнопки "Show More"
 function updateShowMoreButton() {
@@ -64,6 +68,8 @@ function renderVisibleBooks() {
 // ====== Завантаження категорії (один запит) ======
 async function loadBooksByCategory(category) {
   try {
+    // Ховаємо кнопку, поки дані не прийдуть
+    refs.showMoreBtn.classList.add('is-hidden');
     currentCategory = category;
     let booksData;
 
@@ -79,6 +85,9 @@ async function loadBooksByCategory(category) {
     visibleBooksCount = getInitialLimit();
     // Рендеримо першу порцію книг
     renderVisibleBooks();
+
+    // Кнопка оновиться тільки після того, як книги вже з’явилися
+    updateShowMoreButton();
   } catch (error) {
     console.error('loadBooksByCategory error:', error);
   }

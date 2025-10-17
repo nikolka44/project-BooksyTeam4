@@ -4,6 +4,11 @@ import "izitoast/dist/css/iziToast.min.css";
 import { refs } from './refs.js';
 import { renderBookModal } from './render-functions.js';
 import { getBookById } from './api-functions.js';
+import iziToast from 'izitoast';
+// Додатковий імпорт стилів
+import 'izitoast/dist/css/iziToast.min.css';
+import Accordion from 'accordion-js';
+import 'accordion-js/dist/accordion.min.css';
 
 export function initBookModal() {
   if (!refs.bookCardList) return;
@@ -28,8 +33,13 @@ async function onLearnMoreClick(e) {
     const book = await getBookById(bookId);
     console.log(book);
     openBookModal(book);
+    bookOrderForm();
   } catch (error) {
     console.error('❌ Error loading book details:', error);
+    iziToast.error({
+      message: 'Не вдалося завантажити дані книги 😢',
+      position: 'topRight',
+    });
   }
 }
 
@@ -67,8 +77,73 @@ function openBookModal(book) {
 
   refs.bookModalClose.addEventListener('click', closeBookModal);
   refs.bookModalBackdrop.addEventListener('click', onBackdropClick);
+  // refs.buyBtn.addEventListener('submit', onBuyNowClick);
   document.addEventListener('keydown', onEscClose);
   refs.body.classList.add('noScroll');
+}
+
+function bookOrderForm() {
+  // на початку openBookModal або перед bookOrderForm()
+  const modal = refs.bookModalContent;
+  if (!modal) {
+    console.warn(
+      'bookOrderForm: refs.bookModalContent not found — skipping form init'
+    );
+    return;
+  }
+  // знаходимо всі елементи в DOM модалки
+  const form = modal.querySelector('.book-modal-actions');
+  const plusBtn = modal.querySelector('.plus');
+  const minusBtn = modal.querySelector('.minus');
+  const quantityInput = modal.querySelector('.qty-value');
+  const addToCartBtn = modal.querySelector('.add-to-cart-btn');
+
+  // перевірка — якщо форма не знайдена, виходимо
+  if (!form || !plusBtn || !minusBtn || !quantityInput || !addToCartBtn) {
+    console.warn('⚠️ Book order form not found in modal');
+    return;
+  }
+  // +1
+  plusBtn.addEventListener('click', () => {
+    let value = parseInt(quantityInput.value);
+    if (value < parseInt(quantityInput.max)) {
+      quantityInput.value = value + 1;
+    }
+  });
+  // -1
+  minusBtn.addEventListener('click', () => {
+    let value = parseInt(quantityInput.value);
+    if (value > parseInt(quantityInput.min)) {
+      quantityInput.value = value - 1;
+    }
+  });
+  // Add To Cart — просто показує кількість у консолі та повідомленні
+  addToCartBtn.addEventListener('click', () => {
+    const quantity = quantityInput.value;
+    console.log(`Додано до кошика ${quantity} книг(и).`);
+    iziToast.show({
+      message: `Додано до кошика ${quantity} книг(и).`,
+      backgroundColor: '#fceee6',
+      position: 'topRight',
+      close: false,
+      messageSize: '20',
+      timeout: 2000,
+      closeOnClick: true,
+    });
+  });
+
+  // Buy Now — відправка форми
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    iziToast.show({
+      message: 'Дякуємо за покупку 💛💙',
+      backgroundColor: '#e15d05',
+      position: 'topRight',
+      close: false,
+      messageSize: '20',
+      timeout: 2000,
+    });
+  });
 }
 
 function closeBookModal() {

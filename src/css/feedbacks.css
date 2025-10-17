@@ -1,3 +1,6 @@
+.feedbacks {
+  padding: 64px 0;
+}
 .swiper-feedbacks {
   overflow: hidden;
 }
@@ -25,6 +28,15 @@
   color: #fff;
   cursor: pointer;
   transition: opacity 0.2s, transform 0.2s, background-color 0.2s;
+}
+.feedbacks__btn:disabled {
+  background-color: #e15d05;
+  opacity: 0.2;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.feedbacks__btn:disabled svg {
+  fill: #111;
 }
 .feedbacks__btn:focus-visible {
   outline: 2px solid #111;
@@ -77,12 +89,18 @@
   border-radius: 50%;
   background: #0b0500;
   opacity: 0.2;
+  border: 0;
+  padding: 0;
   display: inline-block;
   cursor: pointer;
 }
 .feedbacks__dots-elem.is-active {
   background: #0b0500;
   opacity: 1;
+}
+.feedbacks__dots-elem:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
 }
 .feedbacks__btn-slider {
   display: flex;
@@ -91,9 +109,6 @@
 .feedbacks__navigations {
   display: flex;
   margin-top: 32px;
-}
-.feedbacks__container {
-  padding: 64px 16px;
 }
 .feedbacks__title {
   margin-bottom: 24px;
@@ -124,14 +139,8 @@
   .feedbacks__elements {
     min-height: 244px;
   }
-  .feedbacks__container {
-    padding: 64px 32px;
-  }
 }
 @media only screen and (min-width: 1440px) {
-  .feedbacks__container {
-    padding: 64px 64px;
-  }
   .feedbacks__elements {
     min-height: 217px;
   }

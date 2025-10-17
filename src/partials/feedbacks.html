@@ -1,12 +1,12 @@
 <section id="feedbacks" class="feedbacks">
   <div class="feedbacks__container container">
-    <h2 class="feedbacks__title">Customer Feedbacks</h2>
+    <h2 class="feedbacks__title" id="feedbacks-heading">Customer Feedbacks</h2>
     <p class="feedbacks__title-text">
       See what our readers are saying about us!
     </p>
-    <div class="feedbacks__slider swiper-feedbacks">
+    <div class="feedbacks__slider swiper-feedbacks" id="feedbacks-carousel">
       <ul class="feedbacks__list swiper-wrapper">
-        <li class="feedbacks__elements swiper-slide">
+        <li class="feedbacks__elements swiper-slide" id="feedbacks-slide-1">
           <p class="feedbacks__elements-text">
             Great selection, fast delivery, and beautifully packaged books. My
             go-to store for weekend reads!
@@ -22,7 +22,7 @@
             </div>
           </div>
         </li>
-        <li class="feedbacks__elements swiper-slide">
+        <li class="feedbacks__elements swiper-slide" id="feedbacks-slide-2">
           <p class="feedbacks__elements-text">
             Customer service was super helpful, and my order arrived earlier
             than expected. Highly recommend!
@@ -38,7 +38,7 @@
             </div>
           </div>
         </li>
-        <li class="feedbacks__elements swiper-slide">
+        <li class="feedbacks__elements swiper-slide" id="feedbacks-slide-3">
           <p class="feedbacks__elements-text">
             Love the curated picks and clear descriptions. Makes it easy to find
             my next favorite book.
@@ -54,7 +54,7 @@
             </div>
           </div>
         </li>
-        <li class="feedbacks__elements swiper-slide">
+        <li class="feedbacks__elements swiper-slide" id="feedbacks-slide-4">
           <p class="feedbacks__elements-text">
             Great selection, fast delivery, and beautifully packaged books. My
             go-to store for weekend reads!
@@ -73,17 +73,23 @@
       </ul>
     </div>
     <div class="feedbacks__navigations">
-      <div class="feedbacks__dots">
-        <div class="feedbacks__dots-elem"></div>
-      </div>
-      <div class="feedbacks__btn-slider">
-        <button type="button" class="feedbacks__btn feedbacks__btn--prev">
-          <svg>
+      <div class="feedbacks__dots" aria-label="Choose testimonial"></div>
+      <div class="feedbacks__btn-slider" aria-label="Carousel controls">
+        <button
+          class="feedbacks__btn feedbacks__btn--prev"
+          type="button"
+          aria-label="Previous testimonials"
+        >
+          <svg aria-hidden="true" focusable="false">
             <use href="/img/icons.svg#icon-left-arrow"></use>
           </svg>
         </button>
-        <button type="button" class="feedbacks__btn feedbacks__btn--next">
-          <svg>
+        <button
+          class="feedbacks__btn feedbacks__btn--next"
+          type="button"
+          aria-label="Next testimonials"
+        >
+          <svg aria-hidden="true" focusable="false">
             <use href="/img/icons.svg#icon-right-arrow"></use>
           </svg>
         </button>
