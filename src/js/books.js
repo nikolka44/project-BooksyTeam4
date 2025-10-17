@@ -14,6 +14,7 @@ import {
 import { initBookModal } from './modal-book.js';
 
 // ====== Глобальні змінні ======
+
 let currentBooks = []; // усі завантажені книги
 let currentCategory = 'All categories'; // поточна категорія
 // Змінна для відстеження кількості видимих книг
@@ -25,6 +26,9 @@ const BOOKS_PER_PAGE = 4;
 function getInitialLimit() {
   return window.innerWidth < 768 ? 10 : 24;
 }
+
+// Початково ховаємо кнопку
+if (refs.showMoreBtn) refs.showMoreBtn.classList.add('is-hidden');
 
 //  Функція для оновлення видимості кнопки "Show More"
 function updateShowMoreButton() {
@@ -38,12 +42,17 @@ function updateShowMoreButton() {
 }
 
 // ====== Функція відмалювання книг (без нових запитів) ======
-function renderVisibleBooks() {
+function renderVisibleBooks(isLoadMore = false) {
   // Переконаємось, що visibleBooksCount не більше, ніж доступно
   visibleBooksCount = Math.min(visibleBooksCount, currentBooks.length);
 
-  // Беремо потрібну кількість книг з масиву
-  const booksToRender = currentBooks.slice(0, visibleBooksCount);
+  const booksToRender = isLoadMore
+    ? currentBooks.slice(visibleBooksCount - BOOKS_PER_PAGE, visibleBooksCount)
+    : currentBooks.slice(0, visibleBooksCount);
+
+  if (!isLoadMore) {
+    refs.bookCardList.innerHTML = '';
+  }
   renderBookCardlist(booksToRender);
 
   // Оновлюємо лічильники
@@ -64,6 +73,9 @@ function renderVisibleBooks() {
 // ====== Завантаження категорії (один запит) ======
 async function loadBooksByCategory(category) {
   try {
+    // Ховаємо кнопку, поки дані не прийдуть
+    refs.showMoreBtn.classList.add('is-hidden');
+    refs.bookCardList.innerHTML = '';
     currentCategory = category;
     let booksData;
 
@@ -79,6 +91,9 @@ async function loadBooksByCategory(category) {
     visibleBooksCount = getInitialLimit();
     // Рендеримо першу порцію книг
     renderVisibleBooks();
+
+    // Кнопка оновиться тільки після того, як книги вже з’явилися
+    updateShowMoreButton();
   } catch (error) {
     console.error('loadBooksByCategory error:', error);
   }
@@ -89,7 +104,7 @@ function handleShowMore() {
   // Збільшуємо лічильник видимих книг
   visibleBooksCount += BOOKS_PER_PAGE;
   // Перемальовуємо список з новою кількістю
-  renderVisibleBooks();
+  renderVisibleBooks(true);
 }
 
 // ====== Ініціалізація категорій ======
