@@ -44,12 +44,12 @@ foterFormEl.addEventListener('submit', onJoinSubmit);
 function onJoinSubmit(event) {
   event.preventDefault();
   iziToast.show({
-    message: 'Дякуємо за реєстрацію!',
-    backgroundColor: '#fceee6',
+    message: 'Thank you for joining us!',
     position: 'topRight',
-    close: false,
-    messageSize: '18',
-    timeout: 2000,
+    timeout: 4000,
+    backgroundColor: '#343232ff',
+    icon: '',
+    messageColor: '#fff',
   });
   event.target.reset();
 }
