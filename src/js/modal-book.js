@@ -90,13 +90,12 @@ function bookOrderForm() {
     const quantity = quantityInput.value;
     console.log(`Додано до кошика ${quantity} книг(и).`);
     iziToast.show({
-      message: `Додано до кошика ${quantity} книг(и).`,
-      backgroundColor: '#fceee6',
+      message: `Added ${quantity} book(s) to cart`,
       position: 'topRight',
-      close: false,
-      messageSize: '20',
-      timeout: 2000,
-      closeOnClick: true,
+      timeout: 4000,
+      backgroundColor: '#343232ff',
+      icon: '',
+      messageColor: '#fff',
     });
   });
 
@@ -104,12 +103,12 @@ function bookOrderForm() {
   form.addEventListener('submit', e => {
     e.preventDefault();
     iziToast.show({
-      message: 'Дякуємо за покупку 💛💙',
-      backgroundColor: '#e15d05',
+      message: 'Thank you for your purchase',
       position: 'topRight',
-      close: false,
-      messageSize: '20',
-      timeout: 2000,
+      timeout: 4000,
+      backgroundColor: '#343232ff',
+      icon: '',
+      messageColor: '#fff',
     });
   });
 }

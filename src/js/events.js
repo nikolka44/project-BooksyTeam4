@@ -231,15 +231,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Form submitted:', data);
 
     iziToast.success({
-      title: 'Success',
       message: `Thank you for registering for "${modalEventName.textContent}"! We'll contact you soon.`,
       position: 'topRight',
       timeout: 4000,
-      backgroundColor: '#1c1c1c',
-      titleColor: '#ffa14a',
+      backgroundColor: '#343232ff',
+      icon: '',
       messageColor: '#fff',
-      iconColor: '#ffa14a',
-      progressBarColor: '#ffa14a',
     });
 
     closeModal();
