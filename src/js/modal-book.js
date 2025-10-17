@@ -1,3 +1,6 @@
+import iziToast from 'izitoast';
+import "izitoast/dist/css/iziToast.min.css";
+
 import { refs } from './refs.js';
 import { renderBookModal } from './render-functions.js';
 import { getBookById } from './api-functions.js';
@@ -28,6 +31,7 @@ async function onLearnMoreClick(e) {
 
   try {
     const book = await getBookById(bookId);
+    console.log(book);
     openBookModal(book);
     bookOrderForm();
   } catch (error) {
@@ -38,6 +42,34 @@ async function onLearnMoreClick(e) {
     });
   }
 }
+
+
+
+document.addEventListener('click', (e) => {
+  e.preventDefault;
+  const btn = e.target.closest('[data-action]');
+  const spanCounter = document.querySelector('.qty-value');
+  if (!btn) return;
+
+  const action = btn.dataset.action;
+  if (action === 'increase') {
+    if (spanCounter.textContent >= 0) {
+      spanCounter.textContent++;
+    }
+  } else if (action === 'decrease') {
+    if (spanCounter.textContent > 1) {
+      spanCounter.textContent--;
+    }
+  } else if (action === 'addToCart') {
+    console.log(spanCounter.textContent);
+  } else if (action === 'buyNow') {
+    iziToast.success({
+      message: 'Дякуємо за покупку!',
+      position: 'topRight'
+    });
+  }
+});
+
 
 function openBookModal(book) {
   refs.bookModalContent.innerHTML = renderBookModal(book);
