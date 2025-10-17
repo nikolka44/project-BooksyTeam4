@@ -42,12 +42,17 @@ function updateShowMoreButton() {
 }
 
 // ====== Функція відмалювання книг (без нових запитів) ======
-function renderVisibleBooks() {
+function renderVisibleBooks(isLoadMore = false) {
   // Переконаємось, що visibleBooksCount не більше, ніж доступно
   visibleBooksCount = Math.min(visibleBooksCount, currentBooks.length);
 
-  // Беремо потрібну кількість книг з масиву
-  const booksToRender = currentBooks.slice(0, visibleBooksCount);
+  const booksToRender = isLoadMore
+    ? currentBooks.slice(visibleBooksCount - BOOKS_PER_PAGE, visibleBooksCount)
+    : currentBooks.slice(0, visibleBooksCount);
+
+  if (!isLoadMore) {
+    refs.bookCardList.innerHTML = '';
+  }
   renderBookCardlist(booksToRender);
 
   // Оновлюємо лічильники
@@ -70,6 +75,7 @@ async function loadBooksByCategory(category) {
   try {
     // Ховаємо кнопку, поки дані не прийдуть
     refs.showMoreBtn.classList.add('is-hidden');
+    refs.bookCardList.innerHTML = '';
     currentCategory = category;
     let booksData;
 
@@ -98,7 +104,7 @@ function handleShowMore() {
   // Збільшуємо лічильник видимих книг
   visibleBooksCount += BOOKS_PER_PAGE;
   // Перемальовуємо список з новою кількістю
-  renderVisibleBooks();
+  renderVisibleBooks(true);
 }
 
 // ====== Ініціалізація категорій ======

@@ -2,6 +2,8 @@ import './js/books.js';
 import './js/hero.js';
 import './js/feedbacks.js';
 import './js/events.js';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 // import { getCategoryList } from './js/api-functions.js';
 // import { renderCategoryList } from './js/render-functions.js';
 
@@ -34,3 +36,20 @@ async function initBooks() {
 }
 // initBooks();
 import './js/menu.js';
+
+//footer
+const foterFormEl = document.querySelector('.footer-form');
+foterFormEl.addEventListener('submit', onJoinSubmit);
+
+function onJoinSubmit(event) {
+  event.preventDefault();
+  iziToast.show({
+    message: 'Дякуємо за реєстрацію!',
+    backgroundColor: '#fceee6',
+    position: 'topRight',
+    close: false,
+    messageSize: '18',
+    timeout: 2000,
+  });
+  event.target.reset();
+}
