@@ -121,7 +121,7 @@ export function renderBookModal(book) {
           <div class="quantity-control">
             <button type="button" class="qty-btn minus" data-action="decrease">-</button>
             <input
-             type="number"
+             type="text"
              class="qty-value"
              name="quantity"
              value="1"
