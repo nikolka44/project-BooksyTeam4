@@ -1,5 +1,8 @@
 console.log('Events.js loaded'); // ✅ Для перевірки
 
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 // Чекаємо завантаження DOM
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded fired in events.js');
@@ -27,25 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateSlider() {
     const visible = getVisibleCount();
 
-    // Для мобільної та планшета
     const slideWidth = slides[0].offsetWidth;
     const gap = window.innerWidth >= 768 ? 24 : 24;
     const offset = currentIndex * (slideWidth + gap);
 
     slider.style.transform = `translateX(-${offset}px)`;
 
-    // Оновлення кнопок
     const maxIndex = Math.max(0, slides.length - visible);
     if (prevBtn) prevBtn.disabled = currentIndex === 0;
     if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
 
-    // Оновлення пагінації
     paginationDots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
     });
   }
 
-  // Кнопки навігації
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       const visible = getVisibleCount();
@@ -95,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // mouse
   slider.addEventListener('mousedown', e => {
-    // Если клик по интерактивному элементу внутри слайда — не начинаем свайп
     if (e.target.closest('button, a, input, textarea, select')) return;
     isDragging = true;
     startX = e.clientX;
@@ -193,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.remove('is-hidden');
     document.body.style.overflow = 'hidden';
 
-    // Добавляем слушатель только при открытии
     document.addEventListener('keydown', handleModalKeydown);
   }
 
@@ -201,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.add('is-hidden');
     document.body.style.overflow = '';
     eventForm.reset();
-
     document.removeEventListener('keydown', handleModalKeydown);
   }
 
@@ -226,17 +222,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ========== FORM SUBMIT ==========
   eventForm.addEventListener('submit', e => {
     e.preventDefault();
 
     const formData = new FormData(eventForm);
     const data = Object.fromEntries(formData);
-
     console.log('Form submitted:', data);
 
-    alert(
-      `Thank you for registering for "${modalEventName.textContent}"! We'll contact you soon.`
-    );
+    iziToast.success({
+      title: 'Success',
+      message: `Thank you for registering for "${modalEventName.textContent}"! We'll contact you soon.`,
+      position: 'topRight',
+      timeout: 4000,
+      backgroundColor: '#1c1c1c',
+      titleColor: '#ffa14a',
+      messageColor: '#fff',
+      iconColor: '#ffa14a',
+      progressBarColor: '#ffa14a',
+    });
 
     closeModal();
   });
