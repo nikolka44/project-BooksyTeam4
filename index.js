@@ -27,7 +27,7 @@ import{a as h,i as k,S as D,N,K as F,A as R,P as U}from"./assets/vendor-D06mhQYR
           <div class="quantity-control">
             <button type="button" class="qty-btn minus" data-action="decrease">-</button>
             <input
-             type="number"
+             type="text"
              class="qty-value"
              name="quantity"
              value="1"
