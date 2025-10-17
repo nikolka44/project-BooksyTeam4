@@ -2,14 +2,15 @@
 
 .header {
   background-color: #fceee6;
-
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding: 14px 8px 14px 4px;
   position: relative;
 }
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 24px 14px 20px;
 }
 
 .header-nav {
@@ -61,8 +62,8 @@
     display: none;
   }
 
-  .header-container {
-    padding: 16px 32px;
+  .header {
+    padding: 16px 0px 16px 0px;
   }
 
   .logo-header {
@@ -97,10 +98,6 @@
 /* ======= Десктоп ======= */
 
 @media only screen and (min-width: 1440px) {
-  .header-container {
-    padding: 16px 64px;
-  }
-
   .logo-header {
     margin-right: 815px;
   }
@@ -159,10 +156,6 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
-
-.menu-clos-icon {
-  transform: translateY(-5px);
 }
 
 /* ======= Список пунктів меню ======= */
