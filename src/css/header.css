@@ -2,8 +2,7 @@
 
 .header {
   background-color: #fceee6;
-  padding-top: 14px;
-  padding-bottom: 14px;
+
   padding: 14px 8px 14px 4px;
   position: relative;
 }
@@ -146,10 +145,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 0px 14px 4px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  width: auto;
+  padding: 14px 0px 14px 0px;
 }
 
 .mob-menu-clos-btn {
