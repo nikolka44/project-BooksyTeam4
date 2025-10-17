@@ -124,8 +124,8 @@ export function renderBookModal(book) {
             <button class="qty-btn" data-action="increase">+</button>
           </div>
           <div class="book-modal-btn">
-            <button class="add-to-cart-btn">Add To Cart</button>
-            <button class="buy-now-btn">Buy Now</button>
+            <input type="button" class="add-to-cart-btn" data-action="addToCart" value="Add To Cart">
+            <input type="submit" class="buy-now-btn" data-action="buyNow" value="Buy Now">
           </div>
         </div>
 
